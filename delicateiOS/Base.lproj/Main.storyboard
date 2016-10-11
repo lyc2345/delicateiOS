@@ -1,25 +1,105 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fg8-JI-NdP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Main View Controller-->
+        <scene sceneID="cll-VY-5Wv">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="h1g-cL-aGQ" customClass="MainViewController" customModule="delicateiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="pun-K4-5qd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ljw-pw-eZc"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="Ezu-Sk-Qq4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="plq-Ct-VyA">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="plq-Ct-VyA" secondAttribute="trailing" id="Hua-fD-VwQ"/>
+                            <constraint firstItem="Ljw-pw-eZc" firstAttribute="top" secondItem="plq-Ct-VyA" secondAttribute="bottom" id="MqI-gQ-Spx"/>
+                            <constraint firstItem="plq-Ct-VyA" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" id="ars-Wu-IRW"/>
+                            <constraint firstItem="plq-Ct-VyA" firstAttribute="leading" secondItem="Ezu-Sk-Qq4" secondAttribute="leadingMargin" id="ny9-fU-gh3"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="plq-Ct-VyA" id="qnM-Ir-MbN"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l8D-TV-4B2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="166" y="222"/>
+        </scene>
+        <!--Face Track Camera-->
+        <scene sceneID="mk3-Kd-beC">
+            <objects>
+                <viewController storyboardIdentifier="camera" id="fg8-JI-NdP" customClass="FaceTrackCamera" customModule="delicateiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZWZ-1Y-kax"/>
+                        <viewControllerLayoutGuide type="bottom" id="4QG-mX-oPo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oIQ-4S-uOe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjL-1a-Mfy" userLabel="imagePreview">
+                                <rect key="frame" x="0.0" y="28" width="600" height="525"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Fc-zy-1tD" userLabel="captureImage">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="525"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkr-Do-bCr">
+                                <rect key="frame" x="0.0" y="525" width="600" height="75"/>
+                                <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wq-zn-VWY">
+                                <rect key="frame" x="280" y="543" width="40" height="40"/>
+                                <state key="normal" backgroundImage="circlebtn"/>
+                                <connections>
+                                    <action selector="takeShot:" destination="fg8-JI-NdP" eventType="touchUpInside" id="wcH-Tr-p6I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VjL-1a-Mfy" firstAttribute="top" secondItem="ZWZ-1Y-kax" secondAttribute="bottom" constant="8" id="2xT-0b-eex"/>
+                            <constraint firstItem="Zkr-Do-bCr" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="G24-Js-zRz"/>
+                            <constraint firstItem="7Fc-zy-1tD" firstAttribute="width" secondItem="oIQ-4S-uOe" secondAttribute="width" id="HOQ-fc-4ST"/>
+                            <constraint firstItem="7Fc-zy-1tD" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="MNa-7J-VQx"/>
+                            <constraint firstItem="7Fc-zy-1tD" firstAttribute="top" secondItem="ZWZ-1Y-kax" secondAttribute="bottom" constant="-20" id="QWv-2H-WHq"/>
+                            <constraint firstItem="Zkr-Do-bCr" firstAttribute="height" secondItem="oIQ-4S-uOe" secondAttribute="height" multiplier="1:8" id="Qvb-mQ-vAk"/>
+                            <constraint firstItem="4QG-mX-oPo" firstAttribute="top" secondItem="Zkr-Do-bCr" secondAttribute="bottom" id="Sb7-wx-tgc"/>
+                            <constraint firstItem="VjL-1a-Mfy" firstAttribute="height" secondItem="oIQ-4S-uOe" secondAttribute="height" multiplier="7:8" id="T2S-Gd-z3h"/>
+                            <constraint firstItem="8Wq-zn-VWY" firstAttribute="centerY" secondItem="Zkr-Do-bCr" secondAttribute="centerY" id="Vsp-gb-kJ9"/>
+                            <constraint firstItem="Zkr-Do-bCr" firstAttribute="width" secondItem="oIQ-4S-uOe" secondAttribute="width" id="cD2-rZ-gQw"/>
+                            <constraint firstItem="VjL-1a-Mfy" firstAttribute="width" secondItem="oIQ-4S-uOe" secondAttribute="width" id="djj-jh-207"/>
+                            <constraint firstItem="VjL-1a-Mfy" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="pV8-LB-Kbr"/>
+                            <constraint firstItem="8Wq-zn-VWY" firstAttribute="centerX" secondItem="Zkr-Do-bCr" secondAttribute="centerX" id="tp0-nb-P8Z"/>
+                            <constraint firstItem="7Fc-zy-1tD" firstAttribute="height" secondItem="oIQ-4S-uOe" secondAttribute="height" multiplier="7:8" id="vVx-7h-DbZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="captureImage" destination="7Fc-zy-1tD" id="8V3-DN-9sd"/>
+                        <outlet property="imagePreview" destination="VjL-1a-Mfy" id="Eav-hx-uWe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fkc-Wq-SiE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="912" y="241"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="circlebtn" width="40" height="40"/>
+    </resources>
 </document>

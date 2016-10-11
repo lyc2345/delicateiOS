@@ -1,0 +1,6 @@
+framework module Pods_delicateiOS {
+  umbrella header "Pods-delicateiOS-umbrella.h"
+
+  export *
+  module * { export * }
+}
