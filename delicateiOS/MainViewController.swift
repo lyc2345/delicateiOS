@@ -23,13 +23,20 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
     @IBOutlet weak var imageView: UIImageView!
     
     @IBAction func fivebtn(sender: AnyObject) {
-//        initView()
+        cleanView()
         scrollView.addSubview(fiveView!)
+        centerScrollViewContents(fiveView!)
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.zoomScale = 1
     }
     
     @IBAction func threebtn(sender: AnyObject) {
-//        initView()
+        cleanView()
+//        scrollView.contentSize = threeView!.frame.size
         scrollView.addSubview(threeView!)
+        centerScrollViewContents(threeView!)
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.zoomScale = 1
     }
     
     override func viewDidLoad() {
@@ -38,43 +45,33 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
         fiveView = HorizontalFiveRatio(frame: self.imageView.frame)
         fiveView?.facePoints = facePoints
         scrollView.backgroundColor = UIColor.clearColor()
-//        scrollView.contentSize.height = 1000
-//        scrollView.contentSize.width = 1000
-        scrollView.contentSize = imageView.frame.size
+//        scrollView.contentSize = CGSize(width: 150, height: 600)
+        print("scrollview contentsize = \(scrollView.contentSize)")
         scrollView.delegate = self
-//        scrollView.minimumZoomScale = 0.1
-//        scrollView.maximumZoomScale = 4.0
-//        scrollView.zoomScale = 1.0
+        settingScrollView()
+    }
+    private func settingScrollView(){
         let scrollViewFrame = scrollView.frame
         let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
         let scaleHeight = scrollViewFrame.size.height / scrollView.contentSize.height
         let minScale = min(scaleWidth, scaleHeight);
-        scrollView.minimumZoomScale = minScale;
-        scrollView.maximumZoomScale = 1.0
-        scrollView.zoomScale = minScale;
-        
-        centerScrollViewContents()
-        
-//        self.view.addSubview(threeView!)
-//        self.view.addSubview(fiveView!)
-        
-//        drawingView?.snp_makeConstraints(closure: { (make) in
-//            make.top.equalTo(self.imageView.snp_top)
-//            make.left.equalTo(self.imageView.snp_left)
-//        })
+        scrollView.minimumZoomScale = 1
+        scrollView.maximumZoomScale = 1.3
+        scrollView.zoomScale = 1;
+        centerScrollViewContents(imageView!)
     }
     
-    private func initView(){
-        for subView in self.view.subviews{
+    private func cleanView(){
+        for subView in scrollView.subviews{
             if subView.tag == 1 {
                 subView.removeFromSuperview()
             }
         }
     }
     
-    func centerScrollViewContents() {
+    func centerScrollViewContents(view: UIView) {
         let boundsSize = scrollView.bounds.size
-        var contentsFrame = threeView!.frame
+        var contentsFrame = view.frame
         
         if contentsFrame.size.width < boundsSize.width {
             contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0
@@ -88,7 +85,7 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
             contentsFrame.origin.y = 0.0
         }
         
-        threeView!.frame = contentsFrame
+        view.frame = contentsFrame
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -98,10 +95,24 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return threeView
+        var mySubView: UIView?
+        mySubView = imageView
+        for subView in scrollView.subviews{
+            if subView.tag == 1 {
+                mySubView = subView
+            }
+        }
+        return mySubView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView!) {
-        centerScrollViewContents()
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        var mySubView: UIView?
+        mySubView = imageView
+        for subView in scrollView.subviews{
+            if subView.tag == 1 {
+                mySubView = subView
+            }
+        }
+        centerScrollViewContents(mySubView!)
     }
 }
