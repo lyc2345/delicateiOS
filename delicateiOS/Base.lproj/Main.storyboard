@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -20,24 +19,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="plq-Ct-VyA">
-                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="525"/>
                             </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzl-7J-tTS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="525"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eq-Sz-7aq">
+                                <rect key="frame" x="36" y="533" width="36" height="30"/>
+                                <state key="normal" title="three"/>
+                                <connections>
+                                    <action selector="threebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="SRu-dc-bVo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoL-1R-B5z">
+                                <rect key="frame" x="113" y="533" width="30" height="30"/>
+                                <state key="normal" title="five"/>
+                                <connections>
+                                    <action selector="fivebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="Bwx-c2-oRr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="plq-Ct-VyA" secondAttribute="trailing" id="Hua-fD-VwQ"/>
-                            <constraint firstItem="Ljw-pw-eZc" firstAttribute="top" secondItem="plq-Ct-VyA" secondAttribute="bottom" id="MqI-gQ-Spx"/>
-                            <constraint firstItem="plq-Ct-VyA" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" id="ars-Wu-IRW"/>
-                            <constraint firstItem="plq-Ct-VyA" firstAttribute="leading" secondItem="Ezu-Sk-Qq4" secondAttribute="leadingMargin" id="ny9-fU-gh3"/>
+                            <constraint firstItem="plq-Ct-VyA" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="7:8" id="7HG-7R-b3C"/>
+                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="7:8" id="8JC-em-XPN"/>
+                            <constraint firstItem="plq-Ct-VyA" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" constant="-20" id="FVh-ih-Rd7"/>
+                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" id="SjX-6V-BMU"/>
+                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" constant="-20" id="aHH-HS-15W"/>
+                            <constraint firstItem="plq-Ct-VyA" firstAttribute="centerX" secondItem="Ezu-Sk-Qq4" secondAttribute="centerX" id="erE-xb-gCE"/>
+                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="centerX" secondItem="Ezu-Sk-Qq4" secondAttribute="centerX" id="vbz-w5-XTc"/>
+                            <constraint firstItem="plq-Ct-VyA" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" id="zKS-g2-WNR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="plq-Ct-VyA" id="qnM-Ir-MbN"/>
+                        <outlet property="scrollView" destination="Mzl-7J-tTS" id="cVL-ub-qNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8D-TV-4B2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="222"/>
+            <point key="canvasLocation" x="213" y="241"/>
         </scene>
         <!--Face Track Camera-->
         <scene sceneID="mk3-Kd-beC">
@@ -52,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjL-1a-Mfy" userLabel="imagePreview">
-                                <rect key="frame" x="0.0" y="28" width="600" height="525"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="525"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Fc-zy-1tD" userLabel="captureImage">
@@ -61,7 +82,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkr-Do-bCr">
                                 <rect key="frame" x="0.0" y="525" width="600" height="75"/>
                                 <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wq-zn-VWY">
                                 <rect key="frame" x="280" y="543" width="40" height="40"/>
@@ -73,7 +94,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="VjL-1a-Mfy" firstAttribute="top" secondItem="ZWZ-1Y-kax" secondAttribute="bottom" constant="8" id="2xT-0b-eex"/>
+                            <constraint firstItem="VjL-1a-Mfy" firstAttribute="top" secondItem="ZWZ-1Y-kax" secondAttribute="bottom" constant="-20" id="2xT-0b-eex"/>
                             <constraint firstItem="Zkr-Do-bCr" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="G24-Js-zRz"/>
                             <constraint firstItem="7Fc-zy-1tD" firstAttribute="width" secondItem="oIQ-4S-uOe" secondAttribute="width" id="HOQ-fc-4ST"/>
                             <constraint firstItem="7Fc-zy-1tD" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="MNa-7J-VQx"/>

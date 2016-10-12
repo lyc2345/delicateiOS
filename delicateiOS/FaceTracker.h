@@ -17,5 +17,5 @@
 
 @interface FaceTracker : NSObject
 - (void)update:(uint8_t*) mutablePointer;
-- (CGPoint *)updateGUI:(CGContextRef) context;
+- (NSMutableArray *)updateGUI:(CGContextRef) context;
 @end

@@ -104,27 +104,19 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                 faceTrack!.update(baseAddress);
                 
 //                let pointsMemory = UnsafeMutablePointer.alloc(68)
-                
-                let points = UnsafeMutablePointer<CGPoint>(faceTrack!.updateGUI(context))
-                print("point = \(points.memory)")
-//                let arrary = Array(UnsafeBufferPointer(start: points, count: 68))
-//                var i = 0
-//                let l = arrary.count
-//                while(i<l){
-//                    print(" i = \(i) , x = \(arrary[i].x)")
-//                    i++
-//                }
-                
-//                facePoints = arrary
-//                facePoints = points.memory
-                
-                let cameraH32 = Int32(imagePreview.frame.height)
-//                floatMiny = CGFloat(cameraH32-miny-400)
-                //                let floatMiny = CGFloat(miny)
-//                print("the _cameraHeight  = \(cameraH32)")
-//                print("the floatMinY first = \(cameraH32-miny)")
-//                print("the floatMinY complete envirement= \(miny)")
-                
+                if let points = faceTrack?.updateGUI(context){
+                    if points.count >= 68{
+                        var i = 0;
+                        var pointsA: [CGPoint]?
+                        pointsA = [CGPoint]()
+                        while(i<68){
+                            let point = points.objectAtIndex(i).CGPointValue()
+                            pointsA?.append(point)
+                            i++
+                        }
+                        facePoints = pointsA
+                    }
+                }
                 
                 // Create a Quartz image from the pixel data in the bitmap graphics context
                 let quartzImage: CGImageRef = CGBitmapContextCreateImage(context)!
@@ -152,6 +144,7 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         //AVLayerVideoGravityResizeAspectFill
         
         captureVideoPreviewLayer.frame = self.imagePreview.bounds;
+        print("captureVideoPreviewLayer frame = \(captureVideoPreviewLayer.frame)")
         imagePreview.layer.addSublayer(captureVideoPreviewLayer)
         imagePreview.addSubview(self.captureImage)
         

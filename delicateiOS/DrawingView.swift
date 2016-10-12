@@ -33,7 +33,7 @@ class DrawingView: UIView {
         // Drawing code
         let context = UIGraphicsGetCurrentContext()
         CGContextSetLineWidth(context, 2.0)
-        CGContextSetStrokeColorWithColor(context, UIColor.blackColor().CGColor)
+        CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
         var i = 0;
         let l = facePoints?.count;
         print("l = \(l)")
@@ -45,6 +45,12 @@ class DrawingView: UIView {
             }
             i++
         }
+        
+        CGContextMoveToPoint(context,facePoints![39].x,facePoints![39].y)
+        CGContextAddLineToPoint(context, facePoints![43].x,facePoints![43].y)
+        CGContextMoveToPoint(context,facePoints![48].x,facePoints![48].y)
+        CGContextAddLineToPoint(context, facePoints![54].x,facePoints![54].y)
+        CGContextStrokePath(context)
 //        if minY != nil {
 //            CGContextMoveToPoint(context, 0,200)
 //            CGContextAddLineToPoint(context, 200,200)

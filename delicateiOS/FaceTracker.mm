@@ -17,11 +17,12 @@
 #include "com/tastenkunst/cpp/brf/nxt/utils/StringUtils.hpp"
 
 
+
 @implementation FaceTracker
 
 int _cameraWidth  = 480;
 int _cameraHeight = 640;
-
+//320 497
 ExampleFaceTrackingIOS _example(_cameraWidth, _cameraHeight);
 const std::function< void() > brf::BRFManager::READY = []{ _example.onReadyBRF(); };
 double DrawingUtils::CANVAS_WIDTH = (double)_cameraWidth;
@@ -40,8 +41,17 @@ double DrawingUtils::CANVAS_HEIGHT = (double)_cameraHeight;
     _example.update(mutablePointer);
 }
 
-- (CGPoint *)updateGUI:(CGContextRef) context{
-    return _example.updateGUI(context);
+- (NSMutableArray *)updateGUI:(CGContextRef) context{
+    std::vector< std::shared_ptr<brf::Point> > allPoints = _example.updateGUI(context);
+    NSMutableArray *myArray = [NSMutableArray array];
+    if (allPoints.size() >= 68){
+        for(int i = 0;i<68;i++){
+            CGPoint point = CGPointMake(allPoints[i]->x*320/480, allPoints[i]->y*497/640);
+            NSValue *aa = [NSValue valueWithCGPoint:point];
+            [myArray addObject:aa];
+        }
+    }
+    return myArray;
 }
 
 @end

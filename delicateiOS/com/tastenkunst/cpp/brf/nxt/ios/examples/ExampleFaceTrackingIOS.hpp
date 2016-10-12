@@ -18,6 +18,7 @@
 class ExampleFaceTrackingIOS : public ExampleBase {
 
 	public: brf::Rectangle _faceDetectionROI;
+    public: std::vector< std::shared_ptr<brf::Point> > _pointsToAdd;
 	
 	public: ExampleFaceTrackingIOS(int width, int height) :
 			ExampleBase(width, height, true),
@@ -25,6 +26,7 @@ class ExampleFaceTrackingIOS : public ExampleBase {
 	}
 	
 	public: ~ExampleFaceTrackingIOS() {
+        _pointsToAdd.push_back(std::shared_ptr<brf::Point>(new brf::Point(0, 0)));
 	}
 	
 	public: void onReadyBRF() {
@@ -76,16 +78,13 @@ class ExampleFaceTrackingIOS : public ExampleBase {
 	/**
 	 * We update the sampled buffer with the BRF rois and results.
 	 */
-public: CGPoint* updateGUI(CGContextRef context) {
-        int minY = 100;
-        CGPoint points[68] = {};
-
+    public: std::vector< std::shared_ptr<brf::Point> > updateGUI(CGContextRef context) {
+//        std::vector< std::shared_ptr<brf::Point> > _pointsToAdd;
 		std::string& state = _brfManager.state();
 	
 		// Drawing the region of interest of BRF.
 		DrawingUtils::drawRect(context, _brfRoi, false, 2, 0x00ff00, 1);
         
-
 		// still looking for faces
 		if(state == brf::BRFState::FACE_DETECTION) {
 		
@@ -112,11 +111,10 @@ public: CGPoint* updateGUI(CGContextRef context) {
 		
 			brf::BRFFaceShape& faceShape = _brfManager.faceShape();
             
-			
 			// draw shape
             int i = 0;
             int l = (int)faceShape.points.size();
-            
+        
             while(i < l) {
                 
                 // Draw all points, invalid will be red (and will be removed instantly),
@@ -126,13 +124,12 @@ public: CGPoint* updateGUI(CGContextRef context) {
                     DrawingUtils::drawPoint(context, faceShape.points[i], 2.0f, true, 0x00ff00, 1);                    
                     double x = faceShape.points[i]->x;
                     double y = faceShape.points[i]->y;
-                    points[i] = CGPointMake(x,y);
-                   
-                    std::string xs = std::to_string(points[i].x);
-                    std::string ys = std::to_string(points[i].y);
+                    _pointsToAdd = faceShape.points;
+                    std::string xs = std::to_string(x);
+                    std::string ys = std::to_string(y);
                     std::string counti = std::to_string(i);
-                    brf::trace("ExampleFaceTrackingIOS::i = "+counti+", x ="+xs);
-                    brf::trace("ExampleFaceTrackingIOS::i = "+counti+", x = "+ys);
+//                    brf::trace("ExampleFaceTrackingIOS::i = "+counti+", x ="+xs);
+//                    brf::trace("ExampleFaceTrackingIOS::i = "+counti+", x = "+ys);
                 } else {
 //                    DrawingUtils::drawPoint(context, faceShape.points[i], 2.0f, true, 0xff0000, 1);
                 }
@@ -146,7 +143,7 @@ public: CGPoint* updateGUI(CGContextRef context) {
 			
 			DrawingUtils::drawRect(context, faceShape.bounds, false, 1, 0x00ff00, 1);
 		}
-        return points;
+        return _pointsToAdd;
 	}
 };
 
