@@ -105,11 +105,11 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
                 
 //                let pointsMemory = UnsafeMutablePointer.alloc(68)
                 if let points = faceTrack?.updateGUI(context){
-                    if points.count >= 68{
+                    if points.count >= 69{
                         var i = 0;
                         var pointsA: [CGPoint]?
                         pointsA = [CGPoint]()
-                        while(i<68){
+                        while(i<69){
                             let point = points.objectAtIndex(i).CGPointValue()
                             pointsA?.append(point)
                             i++

@@ -44,8 +44,8 @@ double DrawingUtils::CANVAS_HEIGHT = (double)_cameraHeight;
 - (NSMutableArray *)updateGUI:(CGContextRef) context{
     std::vector< std::shared_ptr<brf::Point> > allPoints = _example.updateGUI(context);
     NSMutableArray *myArray = [NSMutableArray array];
-    if (allPoints.size() >= 68){
-        for(int i = 0;i<68;i++){
+    if (allPoints.size() >= 69){
+        for(int i = 0;i<69;i++){
             CGPoint point = CGPointMake(allPoints[i]->x*320/480, allPoints[i]->y*497/640);
             NSValue *aa = [NSValue valueWithCGPoint:point];
             [myArray addObject:aa];

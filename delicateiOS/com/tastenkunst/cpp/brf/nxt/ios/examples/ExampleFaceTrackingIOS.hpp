@@ -26,6 +26,7 @@ class ExampleFaceTrackingIOS : public ExampleBase {
 	}
 	
 	public: ~ExampleFaceTrackingIOS() {
+        //let line 90 condition had value to pass else it will be crash
         _pointsToAdd.push_back(std::shared_ptr<brf::Point>(new brf::Point(0, 0)));
 	}
 	
@@ -137,8 +138,9 @@ class ExampleFaceTrackingIOS : public ExampleBase {
                 ++i;
             }
             
-//            minY =  DrawingUtils::drawTriangles(context, faceShape.candideShapeVertices,
-//                                                faceShape.candideShapeTriangles, true, 0x00ff00, 1);
+            int minY =  DrawingUtils::drawTriangles(context, faceShape.candideShapeVertices,
+                                                faceShape.candideShapeTriangles, true, 0x00ff00, 1);
+            _pointsToAdd.push_back(std::shared_ptr<brf::Point>(new brf::Point(0, minY)));
 			// draw surrounding rect
 			
 			DrawingUtils::drawRect(context, faceShape.bounds, false, 1, 0x00ff00, 1);

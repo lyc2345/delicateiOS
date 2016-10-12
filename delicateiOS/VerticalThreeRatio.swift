@@ -12,6 +12,7 @@ class VerticalThreeRatio: BasicDrawerView{
     
     override func drawRect(rect: CGRect) {
 //        drawLine(facePoints![23], to: facePoints![17])
+        drawHorizontalLine(facePoints![68]) //the top point
         drawHorizontalLine(facePoints![23])
         drawHorizontalLine(facePoints![41])
         drawHorizontalLine(facePoints![7])

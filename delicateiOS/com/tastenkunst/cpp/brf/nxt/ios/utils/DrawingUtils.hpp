@@ -52,16 +52,16 @@ class DrawingUtils {
 			CGFloat x2 = vertices[ti2 * 2];
 			CGFloat y2 = CANVAS_HEIGHT - vertices[ti2 * 2 + 1];
             
-            if(minY > y0){
-                minY = y0;
+            if(minY > vertices[ti0 * 2 + 1]){
+                minY = vertices[ti0 * 2 + 1];
             }
             
-            if(minY > y1){
-                minY = y1;
+            if(minY > vertices[ti1 * 2 + 1]){
+                minY = vertices[ti1 * 2 + 1];
             }
             
-            if(minY > y2){
-                minY = y2;
+            if(minY > vertices[ti2 * 2 + 1]){
+                minY = vertices[ti2 * 2 + 1];
             }
 			
 			if(isnan(x0) || isnan(y0) || isnan(x1) || isnan(y1) || isnan(x2) || isnan(y2)) {
@@ -78,7 +78,7 @@ class DrawingUtils {
 			
 			i+=3;
 		}
-//		brf::trace("the minY = "+brf::to_string(minY));
+		brf::trace("the minY = "+brf::to_string(minY));
         
 		CGContextStrokePath(context);
         return minY;
