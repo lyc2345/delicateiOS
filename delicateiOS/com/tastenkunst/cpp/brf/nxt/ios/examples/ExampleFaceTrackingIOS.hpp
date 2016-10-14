@@ -140,6 +140,10 @@ class ExampleFaceTrackingIOS : public ExampleBase {
             
             int minY =  DrawingUtils::drawTriangles(context, faceShape.candideShapeVertices,
                                                 faceShape.candideShapeTriangles, true, 0x00ff00, 1);
+//            int minY = 0;
+//            DrawingUtils::drawTrianglesWithTexture(context, faceShape.candideShapeVertices,
+//                                        faceShape.candideShapeTriangles, true, 0x00ff00, 1);
+            
             _pointsToAdd.push_back(std::shared_ptr<brf::Point>(new brf::Point(0, minY)));
 			// draw surrounding rect
 			

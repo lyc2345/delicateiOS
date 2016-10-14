@@ -18,10 +18,27 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
     
     var threeView: VerticalThreeRatio?
     var fiveView: HorizontalFiveRatio?
+    var mouseNoseView: MouseNoseRatio?
+    var phaseView: FourPhase?
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBAction func phasebtn(sender: AnyObject) {
+        cleanView()
+        scrollView.addSubview(phaseView!)
+        centerScrollViewContents(phaseView!)
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.zoomScale = 1
+    }
+    
+    @IBAction func mousebtn(sender: AnyObject) {
+        cleanView()
+        scrollView.addSubview(mouseNoseView!)
+        centerScrollViewContents(mouseNoseView!)
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.zoomScale = 1
+    }
     @IBAction func fivebtn(sender: AnyObject) {
         cleanView()
         scrollView.addSubview(fiveView!)
@@ -44,6 +61,10 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
         threeView?.facePoints = facePoints
         fiveView = HorizontalFiveRatio(frame: self.imageView.frame)
         fiveView?.facePoints = facePoints
+        phaseView = FourPhase(frame: self.imageView.frame)
+        phaseView?.facePoints = facePoints
+        mouseNoseView = MouseNoseRatio(frame: self.imageView.frame)
+        mouseNoseView?.facePoints = facePoints
         scrollView.backgroundColor = UIColor.clearColor()
 //        scrollView.contentSize = CGSize(width: 150, height: 600)
         print("scrollview contentsize = \(scrollView.contentSize)")

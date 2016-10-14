@@ -38,6 +38,20 @@
                                     <action selector="fivebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="Bwx-c2-oRr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx5-pZ-TVh">
+                                <rect key="frame" x="170" y="533" width="46" height="30"/>
+                                <state key="normal" title="mouse"/>
+                                <connections>
+                                    <action selector="mousebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="fY7-sg-mj9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ss-FG-uka">
+                                <rect key="frame" x="239" y="533" width="42" height="30"/>
+                                <state key="normal" title="phase"/>
+                                <connections>
+                                    <action selector="phasebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="cuP-Xz-BgZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

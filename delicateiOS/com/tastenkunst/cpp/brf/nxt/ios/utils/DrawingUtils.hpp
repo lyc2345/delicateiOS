@@ -35,15 +35,59 @@ class DrawingUtils {
 		int i = 0;
 		int l = (int)triangle.size();
         int minY = 999;
-		
-		CGContextSetLineWidth(context, 1.0);
+        int index = 0;
+        
+		brf::trace("the triangle size  = "+brf::to_string(vertices.size()));
+		CGContextSetLineWidth(context, 2.0);
 		CGColorRef color = UIColorFromRGBWithAlpha(fillColor, fillAlpha).CGColor;
 		CGContextSetStrokeColorWithColor(context, color);
-	
+        
+        CGColorRef colors[] = {
+            UIColorFromRGBWithAlpha(0xFFFC00, fillAlpha).CGColor,
+        UIColorFromRGBWithAlpha(0xFF001A, fillAlpha).CGColor,
+        UIColorFromRGBWithAlpha(0x1A00FF, fillAlpha).CGColor,
+        UIColorFromRGBWithAlpha(0xffffff, fillAlpha).CGColor,
+        UIColorFromRGBWithAlpha(0x000000, fillAlpha).CGColor};
+        int range[] = {0,20,32,54,56,62,66,68,86,92,98,120,122,124,138};
+        int ranges[] = {0,20,22,24,28,56,58,60,64,88,90,94,122,124,126,130};
+        int m = 0;
+        int cCount = 0;
+        CGContextSetFillColorWithColor(context, color);
+//        while (m < 226){
+////            CGContextSetFillColorWithColor(context, colors[cCount++]);
+//            CGFloat xx0 = vertices[m];
+//            CGFloat yy0 = CANVAS_HEIGHT - vertices[m+1];
+//
+//            CGRect rectangle = CGRectMake(xx0, yy0, 10, 10);
+//            CGContextAddEllipseInRect(context, rectangle);
+//            CGContextFillPath(context);
+//            
+//            brf::trace("the draw candidepoint  = "+brf::to_string(m));
+//            m+=2;
+//        }
+        
+        //confirm
+        int c = 0;
+        while (c < 16){
+            CGFloat xx0 = vertices[ranges[c]];
+            CGFloat yy0 = CANVAS_HEIGHT - vertices[ranges[c]+1];
+//            CGFloat xx0 = vertices[62];
+//            CGFloat yy0 = CANVAS_HEIGHT - vertices[63];
+            CGRect rectangle = CGRectMake(xx0, yy0, 10, 10);
+            CGContextAddEllipseInRect(context, rectangle);
+            CGContextFillPath(context);
+            brf::trace("the draw candidepoint  = "+brf::to_string(ranges[m]));
+            c++;
+        }
+        
 		while(i < l) {
 			int ti0 = triangle[i];
 			int ti1 = triangle[i + 1];
 			int ti2 = triangle[i + 2];
+            
+//            brf::trace("the ti0 = "+brf::to_string(ti0)+" , i = "+brf::to_string(i));
+//            brf::trace("the ti1 = "+brf::to_string(ti1)+" , i = "+brf::to_string(i+1));
+//            brf::trace("the ti2 = "+brf::to_string(ti2)+" , i = "+brf::to_string(i+2));
 
 			CGFloat x0 = vertices[ti0 * 2];
 			CGFloat y0 = CANVAS_HEIGHT - vertices[ti0 * 2 + 1];
@@ -52,16 +96,23 @@ class DrawingUtils {
 			CGFloat x2 = vertices[ti2 * 2];
 			CGFloat y2 = CANVAS_HEIGHT - vertices[ti2 * 2 + 1];
             
+//            brf::trace("the ti0 = "+brf::to_string(ti0)+" , i = "+brf::to_string(i));
+//            brf::trace("the ti1 = "+brf::to_string(ti1)+" , i = "+brf::to_string(i+1));
+//            brf::trace("the ti2 = "+brf::to_string(ti2)+" , i = "+brf::to_string(i+2));
+            
             if(minY > vertices[ti0 * 2 + 1]){
                 minY = vertices[ti0 * 2 + 1];
+                index = ti0 * 2 + 1;
             }
             
             if(minY > vertices[ti1 * 2 + 1]){
                 minY = vertices[ti1 * 2 + 1];
+                index = ti1 * 2 + 1;
             }
             
             if(minY > vertices[ti2 * 2 + 1]){
                 minY = vertices[ti2 * 2 + 1];
+                index = ti2 * 2 + 1;
             }
 			
 			if(isnan(x0) || isnan(y0) || isnan(x1) || isnan(y1) || isnan(x2) || isnan(y2)) {
@@ -70,16 +121,17 @@ class DrawingUtils {
 					brf::to_string(x1) + " " + brf::to_string(y1) + " "  +
 					brf::to_string(x2) + " " + brf::to_string(y2));
 			} else {
-				CGContextMoveToPoint(context, x0, y0);
-				CGContextAddLineToPoint(context, x1, y1);
-				CGContextAddLineToPoint(context, x2, y2);
-				CGContextAddLineToPoint(context, x0, y0);
+//				CGContextMoveToPoint(context, x0, y0);
+//				CGContextAddLineToPoint(context, x1, y1);
+//				CGContextAddLineToPoint(context, x2, y2);
+//				CGContextAddLineToPoint(context, x0, y0);
+
 			}
 			
 			i+=3;
 		}
-		brf::trace("the minY = "+brf::to_string(minY));
-        
+//		brf::trace("the minY = "+brf::to_string(minY));
+        brf::trace("the vertice's index = "+brf::to_string(index));
 		CGContextStrokePath(context);
         return minY;
 	}

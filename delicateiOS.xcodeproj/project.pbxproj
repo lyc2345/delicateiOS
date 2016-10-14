@@ -25,6 +25,8 @@
 		1B56A6A41DADF2A1007068D3 /* BasicDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56A6A31DADF2A1007068D3 /* BasicDrawerView.swift */; };
 		1B56A6A61DADF808007068D3 /* VerticalThreeRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56A6A51DADF808007068D3 /* VerticalThreeRatio.swift */; };
 		1B56A6A81DADF839007068D3 /* HorizontalFiveRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56A6A71DADF839007068D3 /* HorizontalFiveRatio.swift */; };
+		1BB6588F1DB0B53400AFE8C2 /* MouseNoseRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6588E1DB0B53400AFE8C2 /* MouseNoseRatio.swift */; };
+		1BB658911DB0B5C600AFE8C2 /* FourPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB658901DB0B5C600AFE8C2 /* FourPhase.swift */; };
 		34729CBF98E866923DEB4F20 /* Pods_delicateiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9915C0BB221AFAAEFEAF1177 /* Pods_delicateiOSTests.framework */; };
 		706681B3C8062C614AEA72F7 /* Pods_delicateiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBE3959BCA2545C59BE7344 /* Pods_delicateiOSUITests.framework */; };
 		AEF1012FA1A51171FC69AE4B /* Pods_delicateiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B1A108203F6F7108B19A62 /* Pods_delicateiOS.framework */; };
@@ -95,6 +97,8 @@
 		1B56A6A31DADF2A1007068D3 /* BasicDrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDrawerView.swift; sourceTree = "<group>"; };
 		1B56A6A51DADF808007068D3 /* VerticalThreeRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalThreeRatio.swift; sourceTree = "<group>"; };
 		1B56A6A71DADF839007068D3 /* HorizontalFiveRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalFiveRatio.swift; sourceTree = "<group>"; };
+		1BB6588E1DB0B53400AFE8C2 /* MouseNoseRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MouseNoseRatio.swift; sourceTree = "<group>"; };
+		1BB658901DB0B5C600AFE8C2 /* FourPhase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourPhase.swift; sourceTree = "<group>"; };
 		5766723E94926F86324C1005 /* Pods-delicateiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOSUITests/Pods-delicateiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		58B1A108203F6F7108B19A62 /* Pods_delicateiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_delicateiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AEDCFF9A2D23BAA5A6113F9 /* Pods-delicateiOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOSTests/Pods-delicateiOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -357,6 +361,8 @@
 				1B56A6A31DADF2A1007068D3 /* BasicDrawerView.swift */,
 				1B56A6A51DADF808007068D3 /* VerticalThreeRatio.swift */,
 				1B56A6A71DADF839007068D3 /* HorizontalFiveRatio.swift */,
+				1BB6588E1DB0B53400AFE8C2 /* MouseNoseRatio.swift */,
+				1BB658901DB0B5C600AFE8C2 /* FourPhase.swift */,
 				1B43C31E1DA4DCCF007ABACE /* DrawingView.swift */,
 			);
 			name = Drawer;
@@ -654,7 +660,9 @@
 				1B43C37A1DABBD46007ABACE /* MainViewController.swift in Sources */,
 				1B43C2C61DA4DA39007ABACE /* delicateiOS.xcdatamodeld in Sources */,
 				1B43C31D1DA4DC63007ABACE /* FaceTracker.mm in Sources */,
+				1BB658911DB0B5C600AFE8C2 /* FourPhase.swift in Sources */,
 				1B43C31F1DA4DCCF007ABACE /* DrawingView.swift in Sources */,
+				1BB6588F1DB0B53400AFE8C2 /* MouseNoseRatio.swift in Sources */,
 				1B56A6A81DADF839007068D3 /* HorizontalFiveRatio.swift in Sources */,
 				1B56A6A61DADF808007068D3 /* VerticalThreeRatio.swift in Sources */,
 				1B43C2BE1DA4DA39007ABACE /* AppDelegate.swift in Sources */,
