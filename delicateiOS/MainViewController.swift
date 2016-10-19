@@ -15,45 +15,37 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
     
     var profileImage: UIImage?
     var facePoints: [CGPoint]?
+    var barPoint1: CGPoint?
+    var barPoint2: CGPoint?
     
     var threeView: VerticalThreeRatio?
     var fiveView: HorizontalFiveRatio?
     var mouseNoseView: MouseNoseRatio?
     var phaseView: FourPhase?
+    var measuringAngleView : MeasuringAngleView?
+    var scrollView: ScaleView?
     
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBAction func phasebtn(sender: AnyObject) {
+    @IBAction func measurebtn(sender: AnyObject) {
         cleanView()
-        scrollView.addSubview(phaseView!)
-        centerScrollViewContents(phaseView!)
-        scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        scrollView.zoomScale = 1
+        view.addSubview(measuringAngleView!)
+    }
+    
+    @IBAction func phasebtn(sender: AnyObject) {
+        changeDrawerView(phaseView)
     }
     
     @IBAction func mousebtn(sender: AnyObject) {
-        cleanView()
-        scrollView.addSubview(mouseNoseView!)
-        centerScrollViewContents(mouseNoseView!)
-        scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        scrollView.zoomScale = 1
+        changeDrawerView(mouseNoseView)
     }
+    
     @IBAction func fivebtn(sender: AnyObject) {
-        cleanView()
-        scrollView.addSubview(fiveView!)
-        centerScrollViewContents(fiveView!)
-        scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        scrollView.zoomScale = 1
+        changeDrawerView(fiveView)
     }
     
     @IBAction func threebtn(sender: AnyObject) {
-        cleanView()
-//        scrollView.contentSize = threeView!.frame.size
-        scrollView.addSubview(threeView!)
-        centerScrollViewContents(threeView!)
-        scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        scrollView.zoomScale = 1
+        changeDrawerView(threeView)
     }
     
     override func viewDidLoad() {
@@ -65,48 +57,31 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
         phaseView?.facePoints = facePoints
         mouseNoseView = MouseNoseRatio(frame: self.imageView.frame)
         mouseNoseView?.facePoints = facePoints
-        scrollView.backgroundColor = UIColor.clearColor()
-//        scrollView.contentSize = CGSize(width: 150, height: 600)
-        print("scrollview contentsize = \(scrollView.contentSize)")
-        scrollView.delegate = self
-        settingScrollView()
-    }
-    private func settingScrollView(){
-        let scrollViewFrame = scrollView.frame
-        let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
-        let scaleHeight = scrollViewFrame.size.height / scrollView.contentSize.height
-        let minScale = min(scaleWidth, scaleHeight);
-        scrollView.minimumZoomScale = 1
-        scrollView.maximumZoomScale = 1.3
-        scrollView.zoomScale = 1;
-        centerScrollViewContents(imageView!)
+        measuringAngleView = MeasuringAngleView(frame: CGRectMake(0, 0, 400, 400))
+        measuringAngleView?.center = self.view.center
+
+        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
+        measuringAngleView!.addTouchMovement(myGesture)
+        barPoint1 = CGPoint(x: 0, y: 200)
+        barPoint2 = CGPoint(x: 0, y: 200)
     }
     
+    private func changeDrawerView(view: BasicDrawerView?){
+        cleanView()
+        scrollView = ScaleView(frame: self.imageView.frame)
+        scrollView?.addDrawerView(view!)
+        self.view.addSubview(scrollView!)
+        scrollView?.center = self.imageView.center
+        scrollView!.zoomScale = 1
+    }
+
+    
     private func cleanView(){
-        for subView in scrollView.subviews{
-            if subView.tag == 1 {
+        for subView in view.subviews{
+            if subView.tag == 2 {
                 subView.removeFromSuperview()
             }
         }
-    }
-    
-    func centerScrollViewContents(view: UIView) {
-        let boundsSize = scrollView.bounds.size
-        var contentsFrame = view.frame
-        
-        if contentsFrame.size.width < boundsSize.width {
-            contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0
-        } else {
-            contentsFrame.origin.x = 0.0
-        }
-        
-        if contentsFrame.size.height < boundsSize.height {
-            contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0
-        } else {
-            contentsFrame.origin.y = 0.0
-        }
-        
-        view.frame = contentsFrame
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -115,25 +90,59 @@ class MainViewController: UIViewController,UIScrollViewDelegate{
         print("main face points count = \(facePoints?.count)")
     }
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        var mySubView: UIView?
-        mySubView = imageView
-        for subView in scrollView.subviews{
-            if subView.tag == 1 {
-                mySubView = subView
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        //        let touch = touches.anyObject() as UITouch
+        var count = 0
+        var ccount = 0
+        for touch:AnyObject in touches {
+            print("around count = \(ccount++)")
+            for subview in self.measuringAngleView!.subviews {
+                print("\(count++)")
+                if touch.view == subview {
+                    print("move")
+                    var deg: CGFloat?
+                    var betweenAngle: CGFloat?
+                    let position = touch.locationInView(self.measuringAngleView!)
+                    let target = subview.center
+                    let angle = atan2(target.y-position.y, target.x-position.x)
+                    subview.transform = CGAffineTransformMakeRotation(angle)
+                    let v1 = CGVector(dx: barPoint1!.x - target.x, dy: barPoint1!.y - target.y)
+                    let v2 = CGVector(dx: barPoint2!.x - target.x, dy: barPoint2!.y - target.y)
+                    
+                    switch subview.tag {
+                    case 1:
+                        betweenAngle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
+                        barPoint1 = position
+                        deg = betweenAngle! * CGFloat(180.0 / M_PI)
+                        if deg < 0 { deg! += 360.0 }
+                        if deg >= 180 { deg! = abs(deg!-360) }
+                        self.measuringAngleView?.angle = deg
+                        break
+                    case 2:
+                        betweenAngle = atan2(v1.dy, v1.dx) - atan2(v2.dy, v2.dx)
+                        barPoint2 = position
+                        deg = betweenAngle! * CGFloat(180.0 / M_PI)
+                        if deg < 0 { deg! += 360.0 }
+                        if deg >= 180 { deg! = abs(deg!-360) }
+                        self.measuringAngleView?.angle = deg
+                        break
+                    default:
+                     
+                        break
+                    }
+                }
             }
         }
-        return mySubView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
-        var mySubView: UIView?
-        mySubView = imageView
-        for subView in scrollView.subviews{
-            if subView.tag == 1 {
-                mySubView = subView
-            }
+    func handleMovement(recognizer:UIPanGestureRecognizer) {
+        
+        let translation = recognizer.translationInView(self.view)
+        if let view = recognizer.view {
+            self.measuringAngleView!.center = CGPoint(x:self.measuringAngleView!.center.x + translation.x,
+                                  y:self.measuringAngleView!.center.y + translation.y)
         }
-        centerScrollViewContents(mySubView!)
+        recognizer.setTranslation(CGPointZero, inView: self.view)
     }
+
 }

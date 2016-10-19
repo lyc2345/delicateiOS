@@ -21,9 +21,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="plq-Ct-VyA">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="525"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzl-7J-tTS">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="525"/>
-                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eq-Sz-7aq">
                                 <rect key="frame" x="36" y="533" width="36" height="30"/>
                                 <state key="normal" title="three"/>
@@ -52,22 +49,24 @@
                                     <action selector="phasebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="cuP-Xz-BgZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXT-v3-M1m">
+                                <rect key="frame" x="283" y="533" width="59" height="30"/>
+                                <state key="normal" title="measure"/>
+                                <connections>
+                                    <action selector="measurebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="NK1-3w-79V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="7:8" id="7HG-7R-b3C"/>
-                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="7:8" id="8JC-em-XPN"/>
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" constant="-20" id="FVh-ih-Rd7"/>
-                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" id="SjX-6V-BMU"/>
-                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" constant="-20" id="aHH-HS-15W"/>
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="centerX" secondItem="Ezu-Sk-Qq4" secondAttribute="centerX" id="erE-xb-gCE"/>
-                            <constraint firstItem="Mzl-7J-tTS" firstAttribute="centerX" secondItem="Ezu-Sk-Qq4" secondAttribute="centerX" id="vbz-w5-XTc"/>
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" id="zKS-g2-WNR"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="plq-Ct-VyA" id="qnM-Ir-MbN"/>
-                        <outlet property="scrollView" destination="Mzl-7J-tTS" id="cVL-ub-qNx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8D-TV-4B2" userLabel="First Responder" sceneMemberID="firstResponder"/>

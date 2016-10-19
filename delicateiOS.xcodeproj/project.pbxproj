@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B27356F1DB7475A00112BC4 /* MeasuringAngleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27356E1DB7475A00112BC4 /* MeasuringAngleView.swift */; };
+		1B2735721DB7482C00112BC4 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2735711DB7482C00112BC4 /* Bar.swift */; };
+		1B2735741DB74F3B00112BC4 /* ScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2735731DB74F3B00112BC4 /* ScaleView.swift */; };
 		1B43C2BE1DA4DA39007ABACE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B43C2BD1DA4DA39007ABACE /* AppDelegate.swift */; };
 		1B43C2C31DA4DA39007ABACE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B43C2C11DA4DA39007ABACE /* Main.storyboard */; };
 		1B43C2C61DA4DA39007ABACE /* delicateiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B43C2C41DA4DA39007ABACE /* delicateiOS.xcdatamodeld */; };
@@ -52,6 +55,9 @@
 /* Begin PBXFileReference section */
 		11CC4261523CE7BDB2194828 /* Pods-delicateiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOSTests/Pods-delicateiOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		14B31B06EAF2F166E958BFCF /* Pods-delicateiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOS/Pods-delicateiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1B27356E1DB7475A00112BC4 /* MeasuringAngleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasuringAngleView.swift; sourceTree = "<group>"; };
+		1B2735711DB7482C00112BC4 /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		1B2735731DB74F3B00112BC4 /* ScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleView.swift; sourceTree = "<group>"; };
 		1B43C2BA1DA4DA39007ABACE /* delicateiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = delicateiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B43C2BD1DA4DA39007ABACE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B43C2C21DA4DA39007ABACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,6 +146,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B2735701DB7480100112BC4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1B2735711DB7482C00112BC4 /* Bar.swift */,
+				1B27356E1DB7475A00112BC4 /* MeasuringAngleView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		1B43C2B11DA4DA39007ABACE = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +181,7 @@
 		1B43C2BC1DA4DA39007ABACE /* delicateiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1B2735701DB7480100112BC4 /* View */,
 				1B43C31B1DA4DC63007ABACE /* FaceTracker.h */,
 				1B43C31C1DA4DC63007ABACE /* FaceTracker.mm */,
 				1B56A6A21DADF0E7007068D3 /* Drawer */,
@@ -358,6 +374,7 @@
 		1B56A6A21DADF0E7007068D3 /* Drawer */ = {
 			isa = PBXGroup;
 			children = (
+				1B2735731DB74F3B00112BC4 /* ScaleView.swift */,
 				1B56A6A31DADF2A1007068D3 /* BasicDrawerView.swift */,
 				1B56A6A51DADF808007068D3 /* VerticalThreeRatio.swift */,
 				1B56A6A71DADF839007068D3 /* HorizontalFiveRatio.swift */,
@@ -660,11 +677,14 @@
 				1B43C37A1DABBD46007ABACE /* MainViewController.swift in Sources */,
 				1B43C2C61DA4DA39007ABACE /* delicateiOS.xcdatamodeld in Sources */,
 				1B43C31D1DA4DC63007ABACE /* FaceTracker.mm in Sources */,
+				1B2735741DB74F3B00112BC4 /* ScaleView.swift in Sources */,
 				1BB658911DB0B5C600AFE8C2 /* FourPhase.swift in Sources */,
 				1B43C31F1DA4DCCF007ABACE /* DrawingView.swift in Sources */,
 				1BB6588F1DB0B53400AFE8C2 /* MouseNoseRatio.swift in Sources */,
+				1B2735721DB7482C00112BC4 /* Bar.swift in Sources */,
 				1B56A6A81DADF839007068D3 /* HorizontalFiveRatio.swift in Sources */,
 				1B56A6A61DADF808007068D3 /* VerticalThreeRatio.swift in Sources */,
+				1B27356F1DB7475A00112BC4 /* MeasuringAngleView.swift in Sources */,
 				1B43C2BE1DA4DA39007ABACE /* AppDelegate.swift in Sources */,
 				1B43C3211DA4DDAE007ABACE /* FaceTrackCamera.swift in Sources */,
 				1B56A6A41DADF2A1007068D3 /* BasicDrawerView.swift in Sources */,
