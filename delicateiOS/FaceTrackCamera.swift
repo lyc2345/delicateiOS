@@ -12,6 +12,10 @@ import CoreVideo
 import RxSwift
 import SnapKit
 
+protocol FaceTrackDelegate {
+    func takePicOver(detectionImage: DetectionImage)
+}
+
 class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDelegate{
     
     @IBOutlet weak var captureImage: UIImageView!
@@ -19,8 +23,10 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     
     var floatMiny:CGFloat?
     var facePoints: [CGPoint]?
+    var delegate: FaceTrackDelegate?
     
     @IBAction func takeShot(sender: AnyObject) {
+        
         
         //Create the UIImage
         UIGraphicsBeginImageContext(imagePreview.frame.size)
@@ -31,11 +37,14 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         //Save it to the camera roll
 //        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         session?.stopRunning()
-        let mainController = self.storyboard?.instantiateViewControllerWithIdentifier("main") as! MainViewController
-        mainController.profileImage = image
-        mainController.facePoints = facePoints
-        showViewController(mainController, sender: nil)
+//        let mainController = self.storyboard?.instantiateViewControllerWithIdentifier("main") as! MainViewController
+        let detectionImage = DetectionImage(CGImage: image.CGImage!)
+        print("123333 = \(detectionImage)")
+        detectionImage.facePoints = facePoints
+//        mainController.detectionImage = detectionImage
+//        showViewController(mainController, sender: nil)
         print("the floatMinY complete = \(floatMiny)")
+        delegate?.takePicOver(detectionImage)
         
     }
 

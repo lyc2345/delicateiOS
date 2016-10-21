@@ -13,5 +13,9 @@ class MouseNoseRatio: BasicDrawerView{
     override func drawRect(rect: CGRect) {
         drawLine(facePoints![39], to: facePoints![43])
         drawLine(facePoints![48], to: facePoints![54])
+        
+//        for point in facePoints!{
+//            drawPoint(point)
+//        }
     }
 }

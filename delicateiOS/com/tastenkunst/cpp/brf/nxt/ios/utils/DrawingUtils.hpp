@@ -37,7 +37,6 @@ class DrawingUtils {
         int minY = 999;
         int index = 0;
         
-		brf::trace("the triangle size  = "+brf::to_string(vertices.size()));
 		CGContextSetLineWidth(context, 2.0);
 		CGColorRef color = UIColorFromRGBWithAlpha(fillColor, fillAlpha).CGColor;
 		CGContextSetStrokeColorWithColor(context, color);
@@ -48,10 +47,7 @@ class DrawingUtils {
         UIColorFromRGBWithAlpha(0x1A00FF, fillAlpha).CGColor,
         UIColorFromRGBWithAlpha(0xffffff, fillAlpha).CGColor,
         UIColorFromRGBWithAlpha(0x000000, fillAlpha).CGColor};
-        int range[] = {0,20,32,54,56,62,66,68,86,92,98,120,122,124,138};
-        int ranges[] = {0,20,22,24,28,56,58,60,64,88,90,94,122,124,126,130};
-        int m = 0;
-        int cCount = 0;
+        int faceBounds[] = {0,20,22,24,28,56,58,60,64,88,90,94,122,124,126,130};
         CGContextSetFillColorWithColor(context, color);
 //        while (m < 226){
 ////            CGContextSetFillColorWithColor(context, colors[cCount++]);
@@ -67,17 +63,17 @@ class DrawingUtils {
 //        }
         
         //confirm
-        int c = 0;
-        while (c < 16){
-            CGFloat xx0 = vertices[ranges[c]];
-            CGFloat yy0 = CANVAS_HEIGHT - vertices[ranges[c]+1];
+        int position = 0;
+        while (position < 16){
+            CGFloat xx0 = vertices[faceBounds[position]];
+            CGFloat yy0 = CANVAS_HEIGHT - vertices[faceBounds[position]+1];
 //            CGFloat xx0 = vertices[62];
 //            CGFloat yy0 = CANVAS_HEIGHT - vertices[63];
             CGRect rectangle = CGRectMake(xx0, yy0, 10, 10);
             CGContextAddEllipseInRect(context, rectangle);
             CGContextFillPath(context);
-            brf::trace("the draw candidepoint  = "+brf::to_string(ranges[m]));
-            c++;
+//            brf::trace("the draw candidepoint  = "+brf::to_string(ranges[m]));
+            position++;
         }
         
 		while(i < l) {

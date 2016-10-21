@@ -23,6 +23,7 @@
 int _cameraWidth  = 480;
 int _cameraHeight = 640;
 //320 497
+//768 1024
 ExampleFaceTrackingIOS _example(_cameraWidth, _cameraHeight);
 const std::function< void() > brf::BRFManager::READY = []{ _example.onReadyBRF(); };
 double DrawingUtils::CANVAS_WIDTH = (double)_cameraWidth;
@@ -44,9 +45,13 @@ double DrawingUtils::CANVAS_HEIGHT = (double)_cameraHeight;
 - (NSMutableArray *)updateGUI:(CGContextRef) context{
     std::vector< std::shared_ptr<brf::Point> > allPoints = _example.updateGUI(context);
     NSMutableArray *myArray = [NSMutableArray array];
+    CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height*7/8;
     if (allPoints.size() >= 69){
         for(int i = 0;i<69;i++){
-            CGPoint point = CGPointMake(allPoints[i]->x*320/480, allPoints[i]->y*497/640);
+//            CGPoint point = CGPointMake(allPoints[i]->x*768/480*0.6, allPoints[i]->y*896/640*0.6); //pad
+//            CGPoint point = CGPointMake(allPoints[i]->x*320/480*0.6, allPoints[i]->y*497/640*0.6);
+            CGPoint point = CGPointMake(allPoints[i]->x*screenWidth/480*0.6, allPoints[i]->y*screenHeight/640*0.6);
             NSValue *aa = [NSValue valueWithCGPoint:point];
             [myArray addObject:aa];
         }

@@ -10,6 +10,12 @@ import UIKit
 
 class BasicDrawerView: UIView{
     
+    override var frame: CGRect{
+        didSet{
+            print("fuck my frame = \(frame)")
+        }
+    }
+    
     var facePoints: [CGPoint]?{
         didSet{
             print("facePoint count = \(facePoints?.count)")
