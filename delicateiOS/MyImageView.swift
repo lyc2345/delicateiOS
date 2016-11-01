@@ -14,6 +14,14 @@ protocol MyImageViewDelegate{
 
 class MyImageView: UIImageView{
     
+    var hasImage: Bool = false
+    
+    override var image: UIImage?{
+        didSet{
+            hasImage = true
+        }
+    }
+    
     var delegate: MyImageViewDelegate? {
         didSet{
             let gesture = UITapGestureRecognizer(target: self, action: #selector(MyImageView.click))
@@ -22,6 +30,8 @@ class MyImageView: UIImageView{
     }
     
     func click(){
-        delegate!.showingBy(self.image!)
+        if(hasImage){
+            delegate!.showingBy(self.image!)
+        }
     }
 }

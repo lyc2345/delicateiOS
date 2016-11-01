@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h1g-cL-aGQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h1g-cL-aGQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -24,41 +24,41 @@
                                 <rect key="frame" x="120" y="142" width="360" height="315"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eq-Sz-7aq">
-                                <rect key="frame" x="505" y="40" width="75" height="75"/>
+                                <rect key="frame" x="505" y="60" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8eq-Sz-7aq" secondAttribute="height" id="q9M-OU-Ta7"/>
                                 </constraints>
-                                <state key="normal" title="three"/>
+                                <state key="normal" backgroundImage="three"/>
                                 <connections>
                                     <action selector="threebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="SRu-dc-bVo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OoL-1R-B5z">
-                                <rect key="frame" x="505" y="135" width="75" height="75"/>
+                                <rect key="frame" x="505" y="155" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OoL-1R-B5z" secondAttribute="height" multiplier="1:1" id="oce-4D-vSz"/>
                                 </constraints>
-                                <state key="normal" title="five"/>
+                                <state key="normal" backgroundImage="five"/>
                                 <connections>
                                     <action selector="fivebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="Bwx-c2-oRr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ss-FG-uka">
-                                <rect key="frame" x="505" y="325" width="75" height="75"/>
+                                <rect key="frame" x="505" y="345" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0Ss-FG-uka" secondAttribute="height" multiplier="1:1" id="OzU-Rx-kvm"/>
                                 </constraints>
-                                <state key="normal" title="phase"/>
+                                <state key="normal" backgroundImage="phase"/>
                                 <connections>
                                     <action selector="phasebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="cuP-Xz-BgZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXT-v3-M1m">
-                                <rect key="frame" x="505" y="420" width="75" height="75"/>
+                                <rect key="frame" x="505" y="440" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eXT-v3-M1m" secondAttribute="height" multiplier="1:1" id="DTi-k3-X62"/>
                                 </constraints>
-                                <state key="normal" title="measure"/>
+                                <state key="normal" backgroundImage="measure"/>
                                 <connections>
                                     <action selector="measurebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="NK1-3w-79V"/>
                                 </connections>
@@ -106,11 +106,11 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lx5-pZ-TVh">
-                                <rect key="frame" x="505" y="230" width="75" height="75"/>
+                                <rect key="frame" x="505" y="250" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Lx5-pZ-TVh" secondAttribute="height" id="pJS-QX-S6a"/>
                                 </constraints>
-                                <state key="normal" title="mouse"/>
+                                <state key="normal" backgroundImage="mouse"/>
                                 <connections>
                                     <action selector="mousebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="fY7-sg-mj9"/>
                                 </connections>
@@ -120,7 +120,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Mkv-pT-Wvp" secondAttribute="height" id="Lnc-vy-PYt"/>
                                 </constraints>
-                                <state key="normal" title="Camera"/>
+                                <state key="normal" backgroundImage="camera"/>
                                 <connections>
                                     <action selector="openCamera:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="bUM-ub-Xhn"/>
                                 </connections>
@@ -130,9 +130,19 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KFL-2W-6Wa" secondAttribute="height" id="trl-HQ-zWi"/>
                                 </constraints>
-                                <state key="normal" title="Tracker"/>
+                                <state key="normal" backgroundImage="facetrack"/>
                                 <connections>
                                     <action selector="openTracker:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="j1m-jp-oE5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkH-Aq-Jez">
+                                <rect key="frame" x="505" y="540" width="75" height="64.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wkH-Aq-Jez" secondAttribute="height" multiplier="7:6" id="sC7-3V-XmB"/>
+                                </constraints>
+                                <state key="normal" title="paint"/>
+                                <connections>
+                                    <action selector="picFilter:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="PHL-Xv-KX5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -149,13 +159,14 @@
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="42:80" id="7HG-7R-b3C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eXT-v3-M1m" secondAttribute="trailing" id="8zM-p4-757"/>
                             <constraint firstItem="OoL-1R-B5z" firstAttribute="top" secondItem="8eq-Sz-7aq" secondAttribute="bottom" constant="20" id="D5t-Uz-8Sm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wkH-Aq-Jez" secondAttribute="trailing" id="E2F-fK-9ws"/>
                             <constraint firstItem="xft-ST-89H" firstAttribute="top" secondItem="RiF-Op-oqN" secondAttribute="bottom" constant="20" id="Ei7-OK-xxr"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:10" id="G2w-pL-zWW"/>
                             <constraint firstItem="Lx5-pZ-TVh" firstAttribute="top" secondItem="OoL-1R-B5z" secondAttribute="bottom" constant="20" id="G65-tg-GKZ"/>
                             <constraint firstItem="8eq-Sz-7aq" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="Gvu-z9-xE9"/>
                             <constraint firstItem="lov-mk-mTn" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:8" id="I5n-WV-EZa"/>
                             <constraint firstItem="RiF-Op-oqN" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="Jqb-Vy-VbJ"/>
-                            <constraint firstItem="8eq-Sz-7aq" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" constant="20" id="Jt7-p7-ZOl"/>
+                            <constraint firstItem="8eq-Sz-7aq" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" constant="40" id="Jt7-p7-ZOl"/>
                             <constraint firstItem="xft-ST-89H" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="K2L-Ua-dhs"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:8" id="KH4-uT-B8t"/>
                             <constraint firstItem="PtH-8q-bm4" firstAttribute="leading" secondItem="Ezu-Sk-Qq4" secondAttribute="leadingMargin" id="OTM-wS-Rhi"/>
@@ -168,7 +179,9 @@
                             <constraint firstItem="Mkv-pT-Wvp" firstAttribute="top" secondItem="plq-Ct-VyA" secondAttribute="bottom" constant="40" id="ZPG-FS-p9w"/>
                             <constraint firstItem="Mkv-pT-Wvp" firstAttribute="leading" secondItem="plq-Ct-VyA" secondAttribute="leading" id="aAJ-Lq-pb7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OoL-1R-B5z" secondAttribute="trailing" id="aWN-Rd-kNp"/>
+                            <constraint firstItem="wkH-Aq-Jez" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="am3-cH-2mZ"/>
                             <constraint firstItem="9wG-zm-gPL" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:8" id="cFx-CV-ls5"/>
+                            <constraint firstItem="wkH-Aq-Jez" firstAttribute="top" secondItem="eXT-v3-M1m" secondAttribute="bottom" constant="25" id="cXJ-Tf-QyA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="lov-mk-mTn" secondAttribute="leading" id="ciZ-QY-D6c"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="leading" secondItem="Ezu-Sk-Qq4" secondAttribute="leadingMargin" id="dwc-PO-i6s"/>
                             <constraint firstItem="Lx5-pZ-TVh" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="eEA-zp-431"/>
@@ -226,7 +239,7 @@
                         <outlet property="faceView5" destination="9wG-zm-gPL" id="cYE-1w-5L5"/>
                         <outlet property="faceView6" destination="MfU-Zb-7ke" id="qSC-we-mvh"/>
                         <outlet property="faceView7" destination="PtH-8q-bm4" id="mWG-uH-7tk"/>
-                        <outlet property="imageView" destination="plq-Ct-VyA" id="qnM-Ir-MbN"/>
+                        <outlet property="mainImageView" destination="plq-Ct-VyA" id="Y9e-p9-TpQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8D-TV-4B2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -294,6 +307,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera" width="128" height="128"/>
         <image name="circlebtn" width="40" height="40"/>
+        <image name="facetrack" width="512" height="512"/>
+        <image name="five" width="60" height="60"/>
+        <image name="measure" width="128" height="128"/>
+        <image name="mouse" width="60" height="60"/>
+        <image name="phase" width="60" height="60"/>
+        <image name="three" width="60" height="60"/>
     </resources>
 </document>

@@ -30,6 +30,8 @@
 		1B56A6A41DADF2A1007068D3 /* BasicDrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56A6A31DADF2A1007068D3 /* BasicDrawerView.swift */; };
 		1B56A6A61DADF808007068D3 /* VerticalThreeRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56A6A51DADF808007068D3 /* VerticalThreeRatio.swift */; };
 		1B56A6A81DADF839007068D3 /* HorizontalFiveRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B56A6A71DADF839007068D3 /* HorizontalFiveRatio.swift */; };
+		1B586EEE1DC85E84007C0073 /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B586EED1DC85E62007C0073 /* GPUImage.framework */; };
+		1B586EF01DC85EAC007C0073 /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1B586EED1DC85E62007C0073 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1BB6588F1DB0B53400AFE8C2 /* MouseNoseRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6588E1DB0B53400AFE8C2 /* MouseNoseRatio.swift */; };
 		1BB658911DB0B5C600AFE8C2 /* FourPhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB658901DB0B5C600AFE8C2 /* FourPhase.swift */; };
 		34729CBF98E866923DEB4F20 /* Pods_delicateiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9915C0BB221AFAAEFEAF1177 /* Pods_delicateiOSTests.framework */; };
@@ -52,7 +54,34 @@
 			remoteGlobalIDString = 1B43C2B91DA4DA39007ABACE;
 			remoteInfo = delicateiOS;
 		};
+		1B586EEA1DC85E62007C0073 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B586EE41DC85E62007C0073 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCF1A33414DDB1EC00852800;
+			remoteInfo = GPUImage;
+		};
+		1B586EEC1DC85E62007C0073 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1B586EE41DC85E62007C0073 /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE209E51943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1B586EEF1DC85E92007C0073 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1B586EF01DC85EAC007C0073 /* GPUImage.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		11CC4261523CE7BDB2194828 /* Pods-delicateiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOSTests/Pods-delicateiOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,6 +136,7 @@
 		1B56A6A31DADF2A1007068D3 /* BasicDrawerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicDrawerView.swift; sourceTree = "<group>"; };
 		1B56A6A51DADF808007068D3 /* VerticalThreeRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalThreeRatio.swift; sourceTree = "<group>"; };
 		1B56A6A71DADF839007068D3 /* HorizontalFiveRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalFiveRatio.swift; sourceTree = "<group>"; };
+		1B586EE41DC85E62007C0073 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = framework/GPUImage.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1BB6588E1DB0B53400AFE8C2 /* MouseNoseRatio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MouseNoseRatio.swift; sourceTree = "<group>"; };
 		1BB658901DB0B5C600AFE8C2 /* FourPhase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourPhase.swift; sourceTree = "<group>"; };
 		5766723E94926F86324C1005 /* Pods-delicateiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOSUITests/Pods-delicateiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B586EEE1DC85E84007C0073 /* GPUImage.framework in Frameworks */,
 				1B43C3191DA4DBD8007ABACE /* libz.1.dylib in Frameworks */,
 				1B43C3171DA4DB8B007ABACE /* AVFoundation.framework in Frameworks */,
 				1B43C3151DA4DB85007ABACE /* CoreVideo.framework in Frameworks */,
@@ -187,6 +218,7 @@
 		1B43C2BC1DA4DA39007ABACE /* delicateiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1B586EE41DC85E62007C0073 /* GPUImage.xcodeproj */,
 				1B43C2F01DA4DB0C007ABACE /* com */,
 				1B43C2FF1DA4DB0C007ABACE /* include */,
 				1B43C31B1DA4DC63007ABACE /* FaceTracker.h */,
@@ -391,6 +423,15 @@
 			name = Drawer;
 			sourceTree = "<group>";
 		};
+		1B586EE51DC85E62007C0073 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1B586EEB1DC85E62007C0073 /* libGPUImage.a */,
+				1B586EED1DC85E62007C0073 /* GPUImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		294F664085529A63958DDB35 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +471,7 @@
 				1B43C2B81DA4DA39007ABACE /* Resources */,
 				092FC8EBA3EE429023AB7918 /* [CP] Embed Pods Frameworks */,
 				AB79E651A8EBA22E465B446E /* [CP] Copy Pods Resources */,
+				1B586EEF1DC85E92007C0073 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -516,6 +558,12 @@
 			mainGroup = 1B43C2B11DA4DA39007ABACE;
 			productRefGroup = 1B43C2BB1DA4DA39007ABACE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1B586EE51DC85E62007C0073 /* Products */;
+					ProjectRef = 1B586EE41DC85E62007C0073 /* GPUImage.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1B43C2B91DA4DA39007ABACE /* delicateiOS */,
@@ -524,6 +572,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1B586EEB1DC85E62007C0073 /* libGPUImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGPUImage.a;
+			remoteRef = 1B586EEA1DC85E62007C0073 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1B586EED1DC85E62007C0073 /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = 1B586EEC1DC85E62007C0073 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1B43C2B81DA4DA39007ABACE /* Resources */ = {

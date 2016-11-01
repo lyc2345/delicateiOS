@@ -13,7 +13,7 @@ import RxSwift
 import SnapKit
 
 protocol FaceTrackDelegate {
-    func takePicOver(detectionImage: DetectionImage)
+    func takeFaceTrackPicFinish(detectionImage: DetectionImage)
 }
 
 class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDelegate{
@@ -26,7 +26,6 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     var delegate: FaceTrackDelegate?
     
     @IBAction func takeShot(sender: AnyObject) {
-        
         
         //Create the UIImage
         UIGraphicsBeginImageContext(imagePreview.frame.size)
@@ -44,7 +43,7 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
 //        mainController.detectionImage = detectionImage
 //        showViewController(mainController, sender: nil)
         print("the floatMinY complete = \(floatMiny)")
-        delegate?.takePicOver(detectionImage)
+        delegate?.takeFaceTrackPicFinish(detectionImage)
         
     }
 

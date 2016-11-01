@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GPUImage
 
 
 class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,MyImageViewDelegate,FaceTrackDelegate{
@@ -21,9 +22,6 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
             fiveView?.facePoints = detectionImage!.facePoints
             phaseView?.facePoints = detectionImage!.facePoints
             mouseNoseView?.facePoints = detectionImage!.facePoints
-            faceImages.append(detectionImage!)
-            photoCount++
-            photoClick = photoCount
         }
     }
     
@@ -39,14 +37,12 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     var phaseView: FourPhase?
     var measuringAngleView : MeasuringAngleView?
     var scrollView: ScaleView?
-    
-    var photoClick = 0
     var photoCount = 0
     
     var imagePicker: UIImagePickerController!
     var faceTrack: FaceTrackCamera?
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var faceView1: MyImageView!
     @IBOutlet weak var faceView2: MyImageView!
     @IBOutlet weak var faceView3: MyImageView!
@@ -59,6 +55,13 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         faceTrack = storyboard?.instantiateViewControllerWithIdentifier("camera") as? FaceTrackCamera
         faceTrack?.delegate = self
         presentViewController(faceTrack!, animated: true, completion: nil)
+    }
+    
+    @IBAction func picFilter(sender: AnyObject) {
+        let filter = GPUImageSketchFilter()
+        filter.edgeStrength = 1.3
+        let image = filter.imageByFilteringImage(mainImageView.image!)
+        mainImageView.image = image
     }
     
     @IBAction func openCamera(sender: AnyObject) {
@@ -86,10 +89,10 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     }
     
     override func viewDidLoad() {
-        threeView = VerticalThreeRatio(frame: adaptFrame(self.imageView.frame))
-        fiveView = HorizontalFiveRatio(frame: adaptFrame(self.imageView.frame))
-        phaseView = FourPhase(frame: adaptFrame(self.imageView.frame))
-        mouseNoseView = MouseNoseRatio(frame: adaptFrame(self.imageView.frame))
+        threeView = VerticalThreeRatio(frame: adaptFrame(self.mainImageView.frame))
+        fiveView = HorizontalFiveRatio(frame: adaptFrame(self.mainImageView.frame))
+        phaseView = FourPhase(frame: adaptFrame(self.mainImageView.frame))
+        mouseNoseView = MouseNoseRatio(frame: adaptFrame(self.mainImageView.frame))
         measuringAngleView = MeasuringAngleView(frame: CGRectMake(0, 0, 400, 400))
         measuringAngleView?.center = self.view.center
 
@@ -112,8 +115,8 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     
     private func changeDrawerView(view: BasicDrawerView?){
         cleanView()
-        scrollView = ScaleView(frame: self.imageView.frame)
-        scrollView?.center = self.imageView.center
+        scrollView = ScaleView(frame: self.mainImageView.frame)
+        scrollView?.center = self.mainImageView.center
         scrollView?.addDrawerView(view!)
         self.view.addSubview(scrollView!)
         scrollView!.zoomScale = 1
@@ -129,34 +132,7 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     }
     
     override func viewWillAppear(animated: Bool) {
-        imageView.image = faceImages.last
-        switch photoCount {
-        case 1:
-            faceView1.image = faceImages[0]
-            break
-        case 2:
-            faceView2.image = faceImages[1]
-            break
-        case 3:
-            faceView3.image = faceImages[2]
-            break
-        case 4:
-            faceView4.image = faceImages[3]
-            break
-        case 5:
-            faceView5.image = faceImages[4]
-            break
-        case 6:
-            faceView6.image = faceImages[5]
-            break
-        case 7:
-            faceView7.image = faceImages[6]
-            break
-        default:
-            break
-        }
-//        print("main face points = \(facePoints)")
-        print("main face points count = \(facePoints?.count)")
+        mainImageView.image = faceImages.last
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -217,10 +193,19 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-//        faceImages.insert(image!, atIndex: photoCount++)
         faceImages.append(image!)
-        
-        switch photoCount {
+        refreshSubImages()
+    }
+    
+    func takeFaceTrackPicFinish(detectionImage: DetectionImage) {
+        faceTrack?.dismissViewControllerAnimated(true, completion: nil)
+        self.detectionImage = detectionImage
+        faceImages.append(detectionImage)
+        refreshSubImages()
+    }
+    
+    func refreshSubImages(){
+        switch faceImages.count {
         case 1:
             faceView1.image = faceImages[0]
             break
@@ -245,8 +230,6 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         default:
             break
         }
-        photoCount++
-        photoClick = photoCount
     }
     
     func showingBy(image: UIImage) {
@@ -258,14 +241,11 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
             phaseView?.facePoints = detecImage!.facePoints
             mouseNoseView?.facePoints = detecImage!.facePoints
         }
-        imageView.image = image
+        cleanView()
+        mainImageView.image = image
     }
     
-    func takePicOver(detectionImage: DetectionImage) {
-        faceTrack?.dismissViewControllerAnimated(true, completion: nil)
-        self.detectionImage = detectionImage
-        
-    }
+
 }
 
 extension UIViewController{
