@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B07BCF51DC9C2E10018D0F8 /* Scaleline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B07BCF41DC9C2E10018D0F8 /* Scaleline.swift */; };
 		1B27356F1DB7475A00112BC4 /* MeasuringAngleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B27356E1DB7475A00112BC4 /* MeasuringAngleView.swift */; };
 		1B2735721DB7482C00112BC4 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2735711DB7482C00112BC4 /* Bar.swift */; };
 		1B2735741DB74F3B00112BC4 /* ScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2735731DB74F3B00112BC4 /* ScaleView.swift */; };
@@ -86,6 +87,7 @@
 /* Begin PBXFileReference section */
 		11CC4261523CE7BDB2194828 /* Pods-delicateiOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOSTests/Pods-delicateiOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		14B31B06EAF2F166E958BFCF /* Pods-delicateiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-delicateiOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-delicateiOS/Pods-delicateiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1B07BCF41DC9C2E10018D0F8 /* Scaleline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scaleline.swift; sourceTree = "<group>"; };
 		1B27356E1DB7475A00112BC4 /* MeasuringAngleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeasuringAngleView.swift; sourceTree = "<group>"; };
 		1B2735711DB7482C00112BC4 /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		1B2735731DB74F3B00112BC4 /* ScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleView.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				1B2735731DB74F3B00112BC4 /* ScaleView.swift */,
+				1B07BCF41DC9C2E10018D0F8 /* Scaleline.swift */,
 				1B56A6A31DADF2A1007068D3 /* BasicDrawerView.swift */,
 				1B56A6A51DADF808007068D3 /* VerticalThreeRatio.swift */,
 				1B56A6A71DADF839007068D3 /* HorizontalFiveRatio.swift */,
@@ -535,7 +538,6 @@
 				TargetAttributes = {
 					1B43C2B91DA4DA39007ABACE = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 2BQ9WA25YQ;
 					};
 					1B43C2D01DA4DA39007ABACE = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -760,6 +762,7 @@
 				1B2735791DB9F1C100112BC4 /* DetectionImageView.swift in Sources */,
 				1B43C2BE1DA4DA39007ABACE /* AppDelegate.swift in Sources */,
 				1B43C3211DA4DDAE007ABACE /* FaceTrackCamera.swift in Sources */,
+				1B07BCF51DC9C2E10018D0F8 /* Scaleline.swift in Sources */,
 				1B56A6A41DADF2A1007068D3 /* BasicDrawerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

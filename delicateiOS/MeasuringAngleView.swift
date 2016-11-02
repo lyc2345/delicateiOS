@@ -37,7 +37,7 @@ class MeasuringAngleView: UIView{
         circle.center = self.center
         circle.tag = BarTag.circle.rawValue
         self.addSubview(circle)
-        text = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        text = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
         text.textColor = UIColor.whiteColor()
         text.textAlignment = NSTextAlignment.Center
         text.center = self.center

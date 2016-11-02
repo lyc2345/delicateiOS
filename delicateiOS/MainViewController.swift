@@ -12,8 +12,6 @@ import GPUImage
 
 class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,MyImageViewDelegate,FaceTrackDelegate{
     
-    let defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
-    
     var profileImage: UIImage?
     var detectionImage: DetectionImage?{
         didSet{
@@ -22,12 +20,12 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
             fiveView?.facePoints = detectionImage!.facePoints
             phaseView?.facePoints = detectionImage!.facePoints
             mouseNoseView?.facePoints = detectionImage!.facePoints
+            scaleline?.facePoints = detectionImage?.facePoints
         }
     }
     
     var faceImages = [UIImage]()
     
-    var facePoints: [CGPoint]?
     var barPoint1: CGPoint?
     var barPoint2: CGPoint?
     
@@ -36,6 +34,7 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     var mouseNoseView: MouseNoseRatio?
     var phaseView: FourPhase?
     var measuringAngleView : MeasuringAngleView?
+    var scaleline: Scaleline?
     var scrollView: ScaleView?
     var photoCount = 0
     
@@ -58,6 +57,9 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     }
     
     @IBAction func picFilter(sender: AnyObject) {
+        guard let _ = mainImageView.image else{
+            return
+        }
         let filter = GPUImageSketchFilter()
         filter.edgeStrength = 1.3
         let image = filter.imageByFilteringImage(mainImageView.image!)
@@ -68,8 +70,22 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     @IBAction func measurebtn(sender: AnyObject) {
-        cleanView()
+        guard let _ = mainImageView.image else{
+            return
+        }
+        cleanView(2)
+        measuringAngleView?.center = self.mainImageView.center
         view.addSubview(measuringAngleView!) 
+    }
+    @IBAction func scaleLine(sender: AnyObject) {
+        guard mainImageView.image!.isKindOfClass(DetectionImage) else{
+            return
+        }
+        cleanView(2)
+        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
+        scaleline?.addGestureRecognizer(myGesture)
+        scaleline?.center = self.mainImageView.center
+        view.addSubview(scaleline!)
     }
     
     @IBAction func phasebtn(sender: AnyObject) {
@@ -91,12 +107,13 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     override func viewDidLoad() {
         threeView = VerticalThreeRatio(frame: adaptFrame(self.mainImageView.frame))
         fiveView = HorizontalFiveRatio(frame: adaptFrame(self.mainImageView.frame))
-        phaseView = FourPhase(frame: adaptFrame(self.mainImageView.frame))
         mouseNoseView = MouseNoseRatio(frame: adaptFrame(self.mainImageView.frame))
-        measuringAngleView = MeasuringAngleView(frame: CGRectMake(0, 0, 400, 400))
+        phaseView = FourPhase(frame: adaptFrame(self.mainImageView.frame))
+        measuringAngleView = MeasuringAngleView(frame: CGRectMake(0,0,400,400))
+        scaleline = Scaleline(frame: self.mainImageView.frame)
         measuringAngleView?.center = self.view.center
-
-        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
+        
+        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMeasureAngleMove:")
         faceView1.delegate = self
         faceView2.delegate = self
         faceView3.delegate = self
@@ -114,18 +131,24 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     }
     
     private func changeDrawerView(view: BasicDrawerView?){
-        cleanView()
+        
+        guard mainImageView.image!.isKindOfClass(DetectionImage) else{
+            return
+        }
+        cleanView(2)
         scrollView = ScaleView(frame: self.mainImageView.frame)
         scrollView?.center = self.mainImageView.center
         scrollView?.addDrawerView(view!)
+        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
+        scrollView?.addGestureRecognizer(myGesture)
         self.view.addSubview(scrollView!)
         scrollView!.zoomScale = 1
         
     }
     
-    private func cleanView(){
+    private func cleanView(tag:Int?){
         for subView in view.subviews{
-            if subView.tag == 2 {
+            if subView.tag == tag {
                 subView.removeFromSuperview()
             }
         }
@@ -180,12 +203,21 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         }
     }
     
-    func handleMovement(recognizer:UIPanGestureRecognizer) {
-        
+    func handleMeasureAngleMove(recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translationInView(self.view)
         if let view = recognizer.view {
             self.measuringAngleView!.center = CGPoint(x:self.measuringAngleView!.center.x + translation.x,
                                   y:self.measuringAngleView!.center.y + translation.y)
+        }
+        recognizer.setTranslation(CGPointZero, inView: self.view)
+    }
+    
+    func handleMovement(recognizer:UIPanGestureRecognizer) {
+        
+        let translation = recognizer.translationInView(self.view)
+        if let view = recognizer.view {
+            view.center = CGPoint(x:view.center.x + translation.x,
+                                  y:view.center.y + translation.y)
         }
         recognizer.setTranslation(CGPointZero, inView: self.view)
     }
@@ -235,13 +267,14 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     func showingBy(image: UIImage) {
         if(image.isKindOfClass(DetectionImage)){
             print("it is detection")
-            let detecImage = image as? DetectionImage
-            threeView?.facePoints = detecImage!.facePoints
-            fiveView?.facePoints = detecImage!.facePoints
-            phaseView?.facePoints = detecImage!.facePoints
-            mouseNoseView?.facePoints = detecImage!.facePoints
+            self.detectionImage = image as? DetectionImage
+//            threeView?.facePoints = detecImage!.facePoints
+//            fiveView?.facePoints = detecImage!.facePoints
+//            phaseView?.facePoints = detecImage!.facePoints
+//            mouseNoseView?.facePoints = detecImage!.facePoints
         }
-        cleanView()
+        cleanView(2)
+        cleanView(1)
         mainImageView.image = image
     }
     
@@ -249,11 +282,14 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
 }
 
 extension UIViewController{
+    //generate the new frame to match captureVideoPreviewLayer,let the points can match in the mainImageView
     func adaptFrame(frame: CGRect) -> CGRect{
         let useBounds = UIScreen.mainScreen().bounds
+        //default device iphone 5s
         let defaultFrame = CGRect(x: 0, y: 0, width: 320, height: 568)
         let frameRatioWidth = useBounds.width/defaultFrame.width
         let frameRatioHeight = useBounds.height/defaultFrame.height
         return CGRect(x: 0, y: 0, width: frame.width*frameRatioWidth, height: frame.height*frameRatioHeight)
+//        return CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
     }
 }

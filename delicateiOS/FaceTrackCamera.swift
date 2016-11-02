@@ -36,7 +36,6 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         //Save it to the camera roll
 //        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         session?.stopRunning()
-//        let mainController = self.storyboard?.instantiateViewControllerWithIdentifier("main") as! MainViewController
         let detectionImage = DetectionImage(CGImage: image.CGImage!)
         print("123333 = \(detectionImage)")
         detectionImage.facePoints = facePoints

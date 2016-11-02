@@ -46,6 +46,7 @@ double DrawingUtils::CANVAS_HEIGHT = (double)_cameraHeight;
     std::vector< std::shared_ptr<brf::Point> > allPoints = _example.updateGUI(context);
     NSMutableArray *myArray = [NSMutableArray array];
     CGFloat screenWidth = [[UIScreen mainScreen] bounds].size.width;
+    //captureVideoPreviewLayer height
     CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height*7/8;
     if (allPoints.size() >= 69){
         for(int i = 0;i<69;i++){

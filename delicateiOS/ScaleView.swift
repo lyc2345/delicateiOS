@@ -24,11 +24,11 @@ class ScaleView: UIScrollView,UIScrollViewDelegate{
     private func settingScrollView(){
         tag = 2
         delegate = self
-        minimumZoomScale = 1
+        minimumZoomScale = 0.5
         maximumZoomScale = 1.3
         zoomScale = 1;
-        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
-        addGestureRecognizer(myGesture)
+//        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
+//        addGestureRecognizer(myGesture)
     }
     
     func addDrawerView(view: BasicDrawerView) {
