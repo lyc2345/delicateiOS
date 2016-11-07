@@ -10,7 +10,5 @@ import UIKit
 
 
 class DetectionImage: UIImage{
-    
     var facePoints: [CGPoint]?
-
 }

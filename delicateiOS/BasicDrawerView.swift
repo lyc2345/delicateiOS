@@ -8,11 +8,14 @@
 
 import UIKit
 
+
 class BasicDrawerView: UIView{
+    
+    let Mytag = 1
     
     override var frame: CGRect{
         didSet{
-            print("fuck my frame = \(frame)")
+            
         }
     }
     
@@ -25,15 +28,29 @@ class BasicDrawerView: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.tag = 1
+        self.tag = Mytag
         //transparent
         backgroundColor = UIColor(white: 0, alpha: 0)
         opaque = false
         tintColor = UIColor.blackColor()
+        initGestureRecognizers()
+    }
+    
+    func initGestureRecognizers() {
+        let panGR = UIPanGestureRecognizer(target: self, action: "didPan:")
+        addGestureRecognizer(panGR)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func didPan(panGR: UIPanGestureRecognizer) {
+//        self.superview!.bringSubviewToFront(self)
+        var translation = panGR.translationInView(self)
+        self.center.x += translation.x
+        self.center.y += translation.y
+        panGR.setTranslation(CGPointZero, inView: self)
     }
     
     func drawLine(point: CGPoint,to: CGPoint){
@@ -72,3 +89,4 @@ class BasicDrawerView: UIView{
         CGContextStrokePath(context)
     }
 }
+

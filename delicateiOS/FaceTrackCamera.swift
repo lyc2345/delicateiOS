@@ -9,8 +9,8 @@
 import UIKit
 import AVFoundation
 import CoreVideo
-import RxSwift
-import SnapKit
+
+
 
 protocol FaceTrackDelegate {
     func takeFaceTrackPicFinish(detectionImage: DetectionImage)
@@ -24,6 +24,11 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     var floatMiny:CGFloat?
     var facePoints: [CGPoint]?
     var delegate: FaceTrackDelegate?
+    
+    @IBAction func cancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     @IBAction func takeShot(sender: AnyObject) {
         
@@ -56,7 +61,7 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     var faceTrack: FaceTracker?
     
     let defaultAVCaptureVideoOrientation = AVCaptureVideoOrientation.Portrait 	//portrait/landscape
-    let _mirrored = true;
+    var _mirrored = true;
     var _useFrontCam = true;
     
     
@@ -67,6 +72,13 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     override func viewDidAppear(animated: Bool) {
         initializeCamera()
         faceTrack = FaceTracker()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let _ = self.session {
+            self.session?.stopRunning()
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -143,6 +155,7 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
     }
     
     func initializeCamera(){
+    
         session = AVCaptureSession()
         session?.sessionPreset = defaultAVCaptureSessionPreset
         
@@ -209,12 +222,14 @@ class FaceTrackCamera:UIViewController,AVCaptureVideoDataOutputSampleBufferDeleg
         
         // Configure your output.
         videoQueue = dispatch_queue_create("myQueue", DISPATCH_QUEUE_SERIAL);
+
         videoOutput.setSampleBufferDelegate(self, queue: videoQueue)
         //dispatch_release(videoQueue);
-        
+
         session?.addOutput(videoOutput)
         
         // Start the session running to start the flow of data
         session?.startRunning()
+
     }
 }

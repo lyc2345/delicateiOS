@@ -10,6 +10,7 @@ import UIKit
 
 class ScaleView: UIScrollView,UIScrollViewDelegate{
     
+    let Mytag = 2
     var currentSubView: BasicDrawerView? {
         didSet{
             
@@ -22,13 +23,12 @@ class ScaleView: UIScrollView,UIScrollViewDelegate{
     }
     
     private func settingScrollView(){
-        tag = 2
+        tag = Mytag
         delegate = self
         minimumZoomScale = 0.5
         maximumZoomScale = 1.3
         zoomScale = 1;
-//        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
-//        addGestureRecognizer(myGesture)
+        contentSize = frame.size
     }
     
     func addDrawerView(view: BasicDrawerView) {
@@ -71,20 +71,12 @@ class ScaleView: UIScrollView,UIScrollViewDelegate{
 
 extension ScaleView{
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        contentSize = frame.size
         return currentSubView
     }
     
     func scrollViewDidZoom(scrollView: UIScrollView) {
+        contentSize = frame.size
         centerScrollViewContents(currentSubView!)
-    }
-    
-    func handleMovement(recognizer:UIPanGestureRecognizer) {
-        
-        let translation = recognizer.translationInView(self)
-        if let view = recognizer.view {
-            view.center = CGPoint(x:view.center.x + translation.x,
-                                  y:view.center.y + translation.y)
-        }
-        recognizer.setTranslation(CGPointZero, inView: self)
     }
 }

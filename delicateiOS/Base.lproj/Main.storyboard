@@ -20,7 +20,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="plq-Ct-VyA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="plq-Ct-VyA">
                                 <rect key="frame" x="153" y="243" width="461" height="538"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eq-Sz-7aq">
@@ -63,43 +63,43 @@
                                     <action selector="measurebtn:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="NK1-3w-79V"/>
                                 </connections>
                             </button>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="etw-Sz-pJh" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="etw-Sz-pJh" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="60" width="96.5" height="96.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="etw-Sz-pJh" secondAttribute="height" multiplier="1:1" id="NKQ-4G-0kf"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="lov-mk-mTn" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="lov-mk-mTn" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="176" width="96" height="95.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="lov-mk-mTn" secondAttribute="height" multiplier="1:1" id="Uhb-sa-3W7"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-Op-oqN" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="RiF-Op-oqN" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="291" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RiF-Op-oqN" secondAttribute="height" id="5En-fb-BTg"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="xft-ST-89H" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="xft-ST-89H" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="407" width="96" height="95.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xft-ST-89H" secondAttribute="height" id="BiJ-fG-tKs"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="9wG-zm-gPL" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="9wG-zm-gPL" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="522" width="96" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9wG-zm-gPL" secondAttribute="height" id="nqD-IG-3xb"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="MfU-Zb-7ke" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="MfU-Zb-7ke" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="638" width="96.5" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MfU-Zb-7ke" secondAttribute="height" id="XFC-Uy-rMC"/>
                                 </constraints>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="PtH-8q-bm4" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circlebtn" translatesAutoresizingMaskIntoConstraints="NO" id="PtH-8q-bm4" customClass="MyImageView" customModule="delicateiOS" customModuleProvider="target">
                                 <rect key="frame" x="20" y="754" width="96.5" height="96.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PtH-8q-bm4" secondAttribute="height" id="FuD-S7-Syd"/>
@@ -145,16 +145,6 @@
                                     <action selector="picFilter:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="PHL-Xv-KX5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBz-BH-vdh">
-                                <rect key="frame" x="652" y="756" width="96" height="96"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="DBz-BH-vdh" secondAttribute="height" multiplier="1:1" id="sar-cl-EdU"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="ruler"/>
-                                <connections>
-                                    <action selector="scaleLine:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="xKp-nu-uST"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -171,7 +161,6 @@
                             <constraint firstItem="OoL-1R-B5z" firstAttribute="top" secondItem="8eq-Sz-7aq" secondAttribute="bottom" constant="20" id="D5t-Uz-8Sm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wkH-Aq-Jez" secondAttribute="trailing" id="E2F-fK-9ws"/>
                             <constraint firstItem="xft-ST-89H" firstAttribute="top" secondItem="RiF-Op-oqN" secondAttribute="bottom" constant="20" id="Ei7-OK-xxr"/>
-                            <constraint firstItem="DBz-BH-vdh" firstAttribute="top" secondItem="wkH-Aq-Jez" secondAttribute="bottom" constant="20" id="FLT-d4-9dU"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:10" id="G2w-pL-zWW"/>
                             <constraint firstItem="Lx5-pZ-TVh" firstAttribute="top" secondItem="OoL-1R-B5z" secondAttribute="bottom" constant="20" id="G65-tg-GKZ"/>
                             <constraint firstItem="8eq-Sz-7aq" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="Gvu-z9-xE9"/>
@@ -183,7 +172,6 @@
                             <constraint firstItem="PtH-8q-bm4" firstAttribute="leading" secondItem="Ezu-Sk-Qq4" secondAttribute="leadingMargin" id="OTM-wS-Rhi"/>
                             <constraint firstItem="MfU-Zb-7ke" firstAttribute="top" secondItem="9wG-zm-gPL" secondAttribute="bottom" constant="20" id="OVX-8v-niU"/>
                             <constraint firstItem="PtH-8q-bm4" firstAttribute="top" secondItem="MfU-Zb-7ke" secondAttribute="bottom" constant="20" id="Qkx-2u-Xl1"/>
-                            <constraint firstItem="DBz-BH-vdh" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="Qzp-a5-lHS"/>
                             <constraint firstItem="Lx5-pZ-TVh" firstAttribute="top" secondItem="0Ss-FG-uka" secondAttribute="bottom" constant="20" id="S4s-Ny-jDZ"/>
                             <constraint firstItem="Mkv-pT-Wvp" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="WYU-jk-Jrb"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="top" secondItem="pun-K4-5qd" secondAttribute="bottom" constant="40" id="XFt-Pu-0Pd"/>
@@ -198,7 +186,6 @@
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="leading" secondItem="Ezu-Sk-Qq4" secondAttribute="leadingMargin" id="dwc-PO-i6s"/>
                             <constraint firstItem="Lx5-pZ-TVh" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="eEA-zp-431"/>
                             <constraint firstItem="lov-mk-mTn" firstAttribute="top" secondItem="etw-Sz-pJh" secondAttribute="bottom" constant="20" id="eEi-sm-YNL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="DBz-BH-vdh" secondAttribute="trailing" id="eIb-Ci-0Ku"/>
                             <constraint firstItem="Lx5-pZ-TVh" firstAttribute="top" secondItem="OoL-1R-B5z" secondAttribute="bottom" constant="20" id="eZd-sb-Pay"/>
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="centerX" secondItem="Ezu-Sk-Qq4" secondAttribute="centerX" id="erE-xb-gCE"/>
                             <constraint firstItem="PtH-8q-bm4" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:8" id="f6l-Hf-PiX"/>
@@ -285,16 +272,26 @@
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wq-zn-VWY">
-                                <rect key="frame" x="280" y="543" width="40" height="40"/>
+                                <rect key="frame" x="280" y="542" width="40" height="40"/>
                                 <state key="normal" backgroundImage="circlebtn"/>
                                 <connections>
                                     <action selector="takeShot:" destination="fg8-JI-NdP" eventType="touchUpInside" id="wcH-Tr-p6I"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMG-ID-hEa">
+                                <rect key="frame" x="20" y="547.5" width="48" height="30"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancel:" destination="fg8-JI-NdP" eventType="touchUpInside" id="aQI-9V-PBv"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VjL-1a-Mfy" firstAttribute="top" secondItem="ZWZ-1Y-kax" secondAttribute="bottom" constant="-20" id="2xT-0b-eex"/>
+                            <constraint firstItem="gMG-ID-hEa" firstAttribute="leading" secondItem="oIQ-4S-uOe" secondAttribute="leadingMargin" id="4SG-k1-NUw"/>
                             <constraint firstItem="Zkr-Do-bCr" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="G24-Js-zRz"/>
                             <constraint firstItem="7Fc-zy-1tD" firstAttribute="width" secondItem="oIQ-4S-uOe" secondAttribute="width" id="HOQ-fc-4ST"/>
                             <constraint firstItem="7Fc-zy-1tD" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="MNa-7J-VQx"/>
@@ -305,6 +302,7 @@
                             <constraint firstItem="8Wq-zn-VWY" firstAttribute="centerY" secondItem="Zkr-Do-bCr" secondAttribute="centerY" id="Vsp-gb-kJ9"/>
                             <constraint firstItem="Zkr-Do-bCr" firstAttribute="width" secondItem="oIQ-4S-uOe" secondAttribute="width" id="cD2-rZ-gQw"/>
                             <constraint firstItem="VjL-1a-Mfy" firstAttribute="width" secondItem="oIQ-4S-uOe" secondAttribute="width" id="djj-jh-207"/>
+                            <constraint firstItem="gMG-ID-hEa" firstAttribute="centerY" secondItem="Zkr-Do-bCr" secondAttribute="centerY" id="fUN-sW-qI3"/>
                             <constraint firstItem="VjL-1a-Mfy" firstAttribute="centerX" secondItem="oIQ-4S-uOe" secondAttribute="centerX" id="pV8-LB-Kbr"/>
                             <constraint firstItem="8Wq-zn-VWY" firstAttribute="centerX" secondItem="Zkr-Do-bCr" secondAttribute="centerX" id="tp0-nb-P8Z"/>
                             <constraint firstItem="7Fc-zy-1tD" firstAttribute="height" secondItem="oIQ-4S-uOe" secondAttribute="height" multiplier="7:8" id="vVx-7h-DbZ"/>
@@ -329,7 +327,6 @@
         <image name="measure" width="128" height="128"/>
         <image name="mouse" width="60" height="60"/>
         <image name="phase" width="60" height="60"/>
-        <image name="ruler" width="512" height="512"/>
         <image name="three" width="60" height="60"/>
     </resources>
 </document>

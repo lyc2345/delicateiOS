@@ -14,13 +14,13 @@ class Bar: UIView{
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        line = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 2))
-        line!.backgroundColor = UIColor.whiteColor()
+        line = UIView(frame: CGRect(x: 0, y: 0, width: frame.width, height: 2))
+        line!.backgroundColor = UIColor.greenColor()
         line?.center = self.center
         self.addSubview(line!)
         backgroundColor = UIColor(white: 0, alpha: 0)
+//        backgroundColor = UIColor.redColor()
         opaque = false
-//                backgroundColor = UIColor.blackColor()
     }
     
     required init?(coder aDecoder: NSCoder) {

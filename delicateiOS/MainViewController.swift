@@ -20,11 +20,13 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
             fiveView?.facePoints = detectionImage!.facePoints
             phaseView?.facePoints = detectionImage!.facePoints
             mouseNoseView?.facePoints = detectionImage!.facePoints
-            scaleline?.facePoints = detectionImage?.facePoints
         }
     }
     
     var faceImages = [UIImage]()
+    var drawLines: [UIImageView]? = [UIImageView]()
+    var startPoint: CGPoint?
+    var endPoint: CGPoint?
     
     var barPoint1: CGPoint?
     var barPoint2: CGPoint?
@@ -34,12 +36,11 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     var mouseNoseView: MouseNoseRatio?
     var phaseView: FourPhase?
     var measuringAngleView : MeasuringAngleView?
-    var scaleline: Scaleline?
-    var scrollView: ScaleView?
-    var photoCount = 0
+    var scaleView : ScaleView?
     
     var imagePicker: UIImagePickerController!
     var faceTrack: FaceTrackCamera?
+    var isMeasureShow: Bool = false
     
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var faceView1: MyImageView!
@@ -74,19 +75,17 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
             return
         }
         cleanView(2)
+        isMeasureShow = true
+        measuringAngleView = MeasuringAngleView(frame: CGRectMake(0,0,mainImageView.frame.width,mainImageView.frame.height))
         measuringAngleView?.center = self.mainImageView.center
-        view.addSubview(measuringAngleView!) 
+        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMeasureAngleMove:")
+        measuringAngleView!.addTouchMovement(myGesture)
+        
+//        view.addSubview(measuringAngleView!)
+        view.insertSubview(measuringAngleView!, aboveSubview: mainImageView)
+//        self.view.bringSubviewToFront(btnThree)
     }
-    @IBAction func scaleLine(sender: AnyObject) {
-        guard mainImageView.image!.isKindOfClass(DetectionImage) else{
-            return
-        }
-        cleanView(2)
-        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
-        scaleline?.addGestureRecognizer(myGesture)
-        scaleline?.center = self.mainImageView.center
-        view.addSubview(scaleline!)
-    }
+
     
     @IBAction func phasebtn(sender: AnyObject) {
         changeDrawerView(phaseView)
@@ -105,15 +104,11 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     }
     
     override func viewDidLoad() {
-        threeView = VerticalThreeRatio(frame: adaptFrame(self.mainImageView.frame))
-        fiveView = HorizontalFiveRatio(frame: adaptFrame(self.mainImageView.frame))
-        mouseNoseView = MouseNoseRatio(frame: adaptFrame(self.mainImageView.frame))
-        phaseView = FourPhase(frame: adaptFrame(self.mainImageView.frame))
-        measuringAngleView = MeasuringAngleView(frame: CGRectMake(0,0,400,400))
-        scaleline = Scaleline(frame: self.mainImageView.frame)
-        measuringAngleView?.center = self.view.center
-        
-        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMeasureAngleMove:")
+        threeView = VerticalThreeRatio()
+        fiveView = HorizontalFiveRatio()
+        mouseNoseView = MouseNoseRatio()
+        phaseView = FourPhase()
+
         faceView1.delegate = self
         faceView2.delegate = self
         faceView3.delegate = self
@@ -121,8 +116,8 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         faceView5.delegate = self
         faceView6.delegate = self
         faceView7.delegate = self
-
-        measuringAngleView!.addTouchMovement(myGesture)
+        
+        
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .Camera
@@ -132,21 +127,26 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
     
     private func changeDrawerView(view: BasicDrawerView?){
         
+        guard let _ = mainImageView.image else{
+            print("main image view is null")
+            return
+        }
+
         guard mainImageView.image!.isKindOfClass(DetectionImage) else{
             return
         }
-        cleanView(2)
-        scrollView = ScaleView(frame: self.mainImageView.frame)
-        scrollView?.center = self.mainImageView.center
-        scrollView?.addDrawerView(view!)
-        let myGesture = UIPanGestureRecognizer(target: self, action: "handleMovement:")
-        scrollView?.addGestureRecognizer(myGesture)
-        self.view.addSubview(scrollView!)
-        scrollView!.zoomScale = 1
         
+        cleanView(1)
+        cleanView(2)
+        scaleView = ScaleView(frame: self.mainImageView.frame)
+        scaleView?.addDrawerView(view!)
+        scaleView?.center = self.mainImageView.center
+        scaleView?.zoomScale = 1
+        self.view.insertSubview(scaleView!, aboveSubview: self.mainImageView)
     }
     
     private func cleanView(tag:Int?){
+        isMeasureShow = false
         for subView in view.subviews{
             if subView.tag == tag {
                 subView.removeFromSuperview()
@@ -158,50 +158,90 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         mainImageView.image = faceImages.last
     }
     
+    override func viewDidAppear(animated: Bool) {
+        threeView?.frame = self.mainImageView.frame
+        fiveView?.frame = self.mainImageView.frame
+        mouseNoseView?.frame = self.mainImageView.frame
+        phaseView?.frame = self.mainImageView.frame
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first as? AnyObject {
+            startPoint = touch.locationInView(self.view)
+            drawLines?.append(UIImageView(frame: self.view.frame))
+            self.view.addSubview(drawLines![(drawLines?.count)!-1])
+            print("began = \(startPoint)")
+        }
+    }
+    
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        //        let touch = touches.anyObject() as UITouch
-        var count = 0
-        var ccount = 0
-        for touch:AnyObject in touches {
-            print("around count = \(ccount++)")
-            for subview in self.measuringAngleView!.subviews {
-                print("\(count++)")
-                if touch.view == subview {
-                    print("move")
-                    var deg: CGFloat?
-                    var betweenAngle: CGFloat?
-                    let position = touch.locationInView(self.measuringAngleView!)
-                    let target = subview.center
-                    let angle = atan2(target.y-position.y, target.x-position.x)
-                    subview.transform = CGAffineTransformMakeRotation(angle)
-                    let v1 = CGVector(dx: barPoint1!.x - target.x, dy: barPoint1!.y - target.y)
-                    let v2 = CGVector(dx: barPoint2!.x - target.x, dy: barPoint2!.y - target.y)
-                    
-                    switch subview.tag {
-                    case 1:
-                        betweenAngle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
-                        barPoint1 = position
-                        deg = betweenAngle! * CGFloat(180.0 / M_PI)
-                        if deg < 0 { deg! += 360.0 }
-                        if deg >= 180 { deg! = abs(deg!-360) }
-                        self.measuringAngleView?.angle = deg
-                        break
-                    case 2:
-                        betweenAngle = atan2(v1.dy, v1.dx) - atan2(v2.dy, v2.dx)
-                        barPoint2 = position
-                        deg = betweenAngle! * CGFloat(180.0 / M_PI)
-                        if deg < 0 { deg! += 360.0 }
-                        if deg >= 180 { deg! = abs(deg!-360) }
-                        self.measuringAngleView?.angle = deg
-                        break
-                    default:
-                     
-                        break
+        if let touch = touches.first as? AnyObject {
+            if isMeasureShow {
+                for subview in self.measuringAngleView!.subviews {
+                    if touch.view == subview {
+                        print("move")
+                        var deg: CGFloat?
+                        var betweenAngle: CGFloat?
+                        let position = touch.locationInView(self.measuringAngleView!)
+                        let target = subview.center
+                        let angle = atan2(target.y-position.y, target.x-position.x)
+                        subview.transform = CGAffineTransformMakeRotation(angle)
+                        let v1 = CGVector(dx: barPoint1!.x - target.x, dy: barPoint1!.y - target.y)
+                        let v2 = CGVector(dx: barPoint2!.x - target.x, dy: barPoint2!.y - target.y)
+                        
+                        switch subview.tag {
+                        case 1:
+                            betweenAngle = atan2(v2.dy, v2.dx) - atan2(v1.dy, v1.dx)
+                            barPoint1 = position
+                            deg = betweenAngle! * CGFloat(180.0 / M_PI)
+                            if deg < 0 { deg! += 360.0 }
+                            if deg >= 180 { deg! = abs(deg!-360) }
+                            self.measuringAngleView?.angle = deg
+                            break
+                        case 2:
+                            betweenAngle = atan2(v1.dy, v1.dx) - atan2(v2.dy, v2.dx)
+                            barPoint2 = position
+                            deg = betweenAngle! * CGFloat(180.0 / M_PI)
+                            if deg < 0 { deg! += 360.0 }
+                            if deg >= 180 { deg! = abs(deg!-360) }
+                            self.measuringAngleView?.angle = deg
+                            break
+                        default:
+                            
+                            break
+                        }
                     }
                 }
+            }else{
+                let currentPoint = touch.locationInView(view)
+                drawLineFrom(startPoint!, toPoint: currentPoint,imageView: drawLines![(drawLines?.count)!-1])
+                print("moved = \(currentPoint)")
             }
         }
     }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if let touch = touches.first as? AnyObject {
+            endPoint = touch.locationInView(view)
+            print("end = \(endPoint)")
+        }
+        UIGraphicsEndImageContext()
+    }
+    
+    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint,imageView: UIImageView) {
+        UIGraphicsBeginImageContext(view.frame.size)
+        let context = UIGraphicsGetCurrentContext()
+        imageView.image = nil
+        imageView.image?.drawInRect(CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+        CGContextMoveToPoint(context, fromPoint.x, fromPoint.y)
+        CGContextAddLineToPoint(context, toPoint.x, toPoint.y)
+        CGContextStrokePath(context)
+        imageView.image = UIGraphicsGetImageFromCurrentImageContext()
+        imageView.alpha = 1
+        UIGraphicsEndImageContext()
+        
+    }
+
     
     func handleMeasureAngleMove(recognizer:UIPanGestureRecognizer) {
         let translation = recognizer.translationInView(self.view)
@@ -212,15 +252,7 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         recognizer.setTranslation(CGPointZero, inView: self.view)
     }
     
-    func handleMovement(recognizer:UIPanGestureRecognizer) {
-        
-        let translation = recognizer.translationInView(self.view)
-        if let view = recognizer.view {
-            view.center = CGPoint(x:view.center.x + translation.x,
-                                  y:view.center.y + translation.y)
-        }
-        recognizer.setTranslation(CGPointZero, inView: self.view)
-    }
+
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
@@ -268,28 +300,11 @@ class MainViewController: UIViewController,UIScrollViewDelegate,UINavigationCont
         if(image.isKindOfClass(DetectionImage)){
             print("it is detection")
             self.detectionImage = image as? DetectionImage
-//            threeView?.facePoints = detecImage!.facePoints
-//            fiveView?.facePoints = detecImage!.facePoints
-//            phaseView?.facePoints = detecImage!.facePoints
-//            mouseNoseView?.facePoints = detecImage!.facePoints
         }
-        cleanView(2)
         cleanView(1)
+        cleanView(2)
         mainImageView.image = image
     }
     
 
-}
-
-extension UIViewController{
-    //generate the new frame to match captureVideoPreviewLayer,let the points can match in the mainImageView
-    func adaptFrame(frame: CGRect) -> CGRect{
-        let useBounds = UIScreen.mainScreen().bounds
-        //default device iphone 5s
-        let defaultFrame = CGRect(x: 0, y: 0, width: 320, height: 568)
-        let frameRatioWidth = useBounds.width/defaultFrame.width
-        let frameRatioHeight = useBounds.height/defaultFrame.height
-        return CGRect(x: 0, y: 0, width: frame.width*frameRatioWidth, height: frame.height*frameRatioHeight)
-//        return CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-    }
 }
