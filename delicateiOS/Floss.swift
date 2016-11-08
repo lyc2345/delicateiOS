@@ -17,17 +17,17 @@ extension UIImageView: Floss{
     func moveTo(point: CGPoint) {
         UIGraphicsBeginImageContext(self.frame.size)
         let context = UIGraphicsGetCurrentContext()
-        print("move context = \(context)")
+        print("move context = \(self)")
         context?.moveTo(point)
     }
     
     func lineTo(point: CGPoint) {
-        UIGraphicsBeginImageContext(self.frame.size)
+//        UIGraphicsBeginImageContext(self.frame.size)
         let context = UIGraphicsGetCurrentContext()
         self.image = nil
         self.image?.drawInRect(CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height))
         context?.lineTo(point)
-        print("lineTo context = \(context)")
+        print("lineTo context = \(self)")
         self.image = UIGraphicsGetImageFromCurrentImageContext()
         self.alpha = 1
         UIGraphicsEndImageContext()

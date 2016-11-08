@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VerticalThreeRatio: BasicDrawerView{
+class HorizontalThreeRatio: BasicDrawerView{
     
     override func drawRect(rect: CGRect) {
         let distance = facePoints![41].y - facePoints![23].y

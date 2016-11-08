@@ -8,6 +8,16 @@
 
 import Foundation
 
-struct Measure{
-    
+protocol Measure {
+    func calculateAngleDeg(base: CGVector,another: CGVector) -> CGFloat
+}
+
+extension UIViewController: Measure{
+    func calculateAngleDeg(base: CGVector, another: CGVector) -> CGFloat{
+        let angle = atan2(base.dy, base.dx) - atan2(another.dy, another.dx)
+        var deg = angle * CGFloat(180.0 / M_PI)
+        if deg < 0 { deg += 360.0 }
+        if deg >= 180 { deg = abs(deg - 360) }
+        return deg
+    }
 }

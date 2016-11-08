@@ -145,6 +145,16 @@
                                     <action selector="picFilter:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="PHL-Xv-KX5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDn-2s-6zM">
+                                <rect key="frame" x="652" y="756" width="96" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qDn-2s-6zM" secondAttribute="height" multiplier="1:1" id="qiu-0x-BwJ"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="line"/>
+                                <connections>
+                                    <action selector="clean:" destination="h1g-cL-aGQ" eventType="touchUpInside" id="uY5-eW-KVM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -155,6 +165,7 @@
                             <constraint firstItem="eXT-v3-M1m" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="3sJ-Ee-7CP"/>
                             <constraint firstItem="RiF-Op-oqN" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:8" id="4F3-ma-9EN"/>
                             <constraint firstItem="9wG-zm-gPL" firstAttribute="top" secondItem="xft-ST-89H" secondAttribute="bottom" constant="20" id="4IN-Qt-4Wp"/>
+                            <constraint firstItem="qDn-2s-6zM" firstAttribute="top" secondItem="wkH-Aq-Jez" secondAttribute="bottom" constant="20" id="50V-f8-73t"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="6DE-td-1Mc"/>
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="42:80" id="7HG-7R-b3C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eXT-v3-M1m" secondAttribute="trailing" id="8zM-p4-757"/>
@@ -183,6 +194,7 @@
                             <constraint firstItem="9wG-zm-gPL" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:8" id="cFx-CV-ls5"/>
                             <constraint firstItem="wkH-Aq-Jez" firstAttribute="top" secondItem="eXT-v3-M1m" secondAttribute="bottom" constant="20" id="cXJ-Tf-QyA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="lov-mk-mTn" secondAttribute="leading" id="ciZ-QY-D6c"/>
+                            <constraint firstItem="qDn-2s-6zM" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="height" id="dMB-R6-qsE"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="leading" secondItem="Ezu-Sk-Qq4" secondAttribute="leadingMargin" id="dwc-PO-i6s"/>
                             <constraint firstItem="Lx5-pZ-TVh" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="eEA-zp-431"/>
                             <constraint firstItem="lov-mk-mTn" firstAttribute="top" secondItem="etw-Sz-pJh" secondAttribute="bottom" constant="20" id="eEi-sm-YNL"/>
@@ -203,7 +215,9 @@
                             <constraint firstItem="plq-Ct-VyA" firstAttribute="centerY" secondItem="Ezu-Sk-Qq4" secondAttribute="centerY" id="piq-uT-53G"/>
                             <constraint firstItem="etw-Sz-pJh" firstAttribute="centerY" secondItem="Ezu-Sk-Qq4" secondAttribute="centerY" id="saZ-eC-dzL"/>
                             <constraint firstItem="lov-mk-mTn" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="sn5-gQ-BVj"/>
+                            <constraint firstItem="qDn-2s-6zM" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="uKv-Yg-kAq"/>
                             <constraint firstItem="xft-ST-89H" firstAttribute="height" secondItem="Ezu-Sk-Qq4" secondAttribute="height" multiplier="1:8" id="ubq-7v-PZm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qDn-2s-6zM" secondAttribute="trailing" id="vKl-ki-GwK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8eq-Sz-7aq" secondAttribute="trailing" id="vwE-AO-6dG"/>
                             <constraint firstItem="MfU-Zb-7ke" firstAttribute="width" secondItem="Ezu-Sk-Qq4" secondAttribute="width" multiplier="1:8" id="wUw-CM-aWs"/>
                             <constraint firstItem="eXT-v3-M1m" firstAttribute="top" secondItem="0Ss-FG-uka" secondAttribute="bottom" constant="20" id="wes-0I-eeY"/>
@@ -228,6 +242,7 @@
                                 <exclude reference="mBV-Vp-r6A"/>
                                 <exclude reference="wes-0I-eeY"/>
                                 <exclude reference="zIr-97-RoU"/>
+                                <exclude reference="dMB-R6-qsE"/>
                             </mask>
                         </variation>
                     </view>
@@ -324,6 +339,7 @@
         <image name="facetrack" width="1451" height="1451"/>
         <image name="five" width="60" height="60"/>
         <image name="imagefilter" width="512" height="512"/>
+        <image name="line" width="512" height="512"/>
         <image name="measure" width="128" height="128"/>
         <image name="mouse" width="60" height="60"/>
         <image name="phase" width="60" height="60"/>

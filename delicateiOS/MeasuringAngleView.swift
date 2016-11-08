@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum BarTag :Int{
-    case first = 1
-    case second = 2
-    case circle = 3
-}
-
 class MeasuringAngleView: UIView{
     
     let MyTag = 2
@@ -57,7 +51,7 @@ class MeasuringAngleView: UIView{
 //        circle.backgroundColor = UIColor.blackColor()
         circle.layer.cornerRadius = circle.frame.width / 2.0;
         circle.center = self.center
-        circle.tag = BarTag.circle.rawValue
+        circle.tag = 3
         self.addSubview(circle)
         text = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
         text.textColor = UIColor.whiteColor()
@@ -69,7 +63,7 @@ class MeasuringAngleView: UIView{
     private func setupBar1(frame: CGRect){
         bar1 = Bar(frame: CGRect(x: 0, y: 0, width: frame.width/2, height: 20))
         bar1.center = self.center
-        bar1.tag = BarTag.first.rawValue
+        bar1.tag = 1
         self.addSubview(bar1)
         bar1.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
     }
@@ -77,7 +71,7 @@ class MeasuringAngleView: UIView{
     private func setupBar2(frame: CGRect){
         bar2 = Bar(frame: CGRect(x: 0, y: 0, width: frame.width/2, height: 20))
         bar2.center = self.center
-        bar2.tag = BarTag.second.rawValue
+        bar2.tag = 2
         self.addSubview(bar2)
         bar2.layer.anchorPoint = CGPoint(x: 1.0, y: 0.5)
     }
